@@ -1,0 +1,19 @@
+---
+# For more information about default variables see:
+# http://www.ansibleworks.com/docs/playbooks_variables.html#id26
+#
+# users:
+#  - name: foobar
+#    comment: Foo Bar (full user name)
+#    email: foo@bar.com
+#    group: staff (main group)
+#    groups: sudo,adm,www-data (other groups)
+#    shell: /bin/zsh
+#    ssh_key: "xxx" (private key)
+#    authorized_keys:
+#      - "xxx"
+#      - "xxx"
+#
+
+# array of users to add
+users: []

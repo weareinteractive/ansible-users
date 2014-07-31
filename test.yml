@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+  vars_files:
+    - 'defaults/main.yml'
+  tasks:
+    - include: 'tasks/main.yml'
+      vars:
+        apt_cache_valid_time: 7200
+        apt_packages:
+          - vim
+          - tree
