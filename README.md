@@ -92,3 +92,4 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## License
 Copyright (c) We Are Interactive under the MIT license.
+
