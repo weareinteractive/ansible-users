@@ -33,20 +33,23 @@ $ git clone https://github.com/weareinteractive/ansible-role-users.git
 
 ```
 # users:
-#  - name: foobar
-#    comment: Foo Bar (full user name)
-#    email: foo@bar.com
-#    group: staff (main group)
-#    groups: sudo,adm,www-data (other groups)
-#    shell: /bin/zsh
-#    ssh_key: "xxx" (private key)
-#    authorized_keys:
-#      - "xxx"
-#      - "xxx"
+#   - username: foobar (required)
+#     name: Foo Bar (required)
+#     email: foo@bar.com (required)
+#     authorized_keys: (required)
+#       - "xxx"
+#       - "xxx"
+#     group: staff
+#     groups: ["adm", "www-data"]
+#     shell: /bin/zsh
+#     ssh_key: "xxx"
 #
 
 # array of users to add
 users: []
+users_shell: /bin/bash
+users_group: staff
+users_groups: []
 ```
 
 ## Example playbook
@@ -58,9 +61,15 @@ users: []
     - franklinkim.users
   vars:
     users:
-      - name: foobar
-        comment: Foo Bar
+      - username: foobar
+        name: Foo Bar
         email: foo@bar.com
+        authorized_keys: []
+    users_group: staff
+    users_shell: /bin/sh
+    users_groups:
+      - adm
+      - www-data
 ```
 
 ## Testing

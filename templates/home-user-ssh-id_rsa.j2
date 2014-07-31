@@ -1,3 +1,3 @@
 # {{ ansible_managed }}
 
-{{ item.ssh_key }}
+{{ item.ssh_key | default('') }}

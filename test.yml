@@ -6,7 +6,13 @@
   tasks:
     - include: 'tasks/main.yml'
       vars:
-        apt_cache_valid_time: 7200
-        apt_packages:
-          - vim
-          - tree
+        users:
+          - username: foobar
+            name: Foo Bar
+            email: foo@bar.com
+            authorized_keys: []
+        users_group: staff
+        users_shell: /bin/sh
+        users_groups:
+          - adm
+          - www-data

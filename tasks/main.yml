@@ -2,11 +2,11 @@
 
 - name: Creating users
   user: >
-    name={{ item.name }}
-    comment="{{ item.comment }}"
-    group={{ item.group }}
-    groups={{ item.groups }}
-    shell={{ item.shell }}
+    name={{ item.username }}
+    comment='{{ item.name }}'
+    group={{ item.group if item.group is defined else users_group }}
+    groups={{ item.groups if item.groups is defined else users_groups | join(',')}}
+    shell={{ item.shell if item.shell is defined else users_shell }}
   with_items: users
   tags:
     - system
@@ -14,9 +14,22 @@
 
 - name: Setting user's home permission
   file: >
-    dest=/home/{{ item.name }}
-    owner={{ item.name }}
+    dest=/home/{{ item.username }}
+    owner={{ item.username }}
+    group={{ item.group if item.group is defined else users_group }}
     mode=0755
+  with_items: users
+  tags:
+    - system
+    - users
+
+- name: Adding ssh directory
+  file: >
+    path=/home/{{ item.username }}/.ssh
+    state=directory
+    owner={{ item.username }}
+    group={{ item.group if item.group is defined else users_group }}
+    mode=0700
   with_items: users
   tags:
     - system
@@ -25,8 +38,8 @@
 - name: Adding ssh keys
   template: >
     src=home-user-ssh-id_rsa.j2
-    dest=/home/{{ item.name }}/.ssh/id_rsa
-    owner={{ item.name }}
+    dest=/home/{{ item.username }}/.ssh/id_rsa
+    owner={{ item.username }}
     mode=0600
   with_items: users
   tags:
@@ -35,7 +48,7 @@
 
 - name: Adding authorized keys
   authorized_key: >
-    user={{ item.0.name }}
+    user={{ item.0.username }}
     key="{{ item.1 }}"
   with_subelements:
     - users
