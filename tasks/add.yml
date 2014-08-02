@@ -4,12 +4,21 @@
   user: >
     name={{ item.username }}
     comment='{{ item.name }}'
+  with_items: users
+  tags:
+    - system
+    - users
+
+- name: Configuring user
+  user: >
+    name={{ item.username }}
     group={{ item.group if item.group is defined else (users_group if users_group != false else item.username) }}
     groups={{ item.groups if item.groups is defined else users_groups | join(',')}}
   with_items: users
   tags:
     - system
     - users
+
 
 - name: Setting user's home permission
   file: >

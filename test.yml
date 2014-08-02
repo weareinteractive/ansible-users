@@ -10,7 +10,6 @@
           - username: foobar
             name: Foo Bar
             authorized_keys: []
-        users_group: staff
         users_groups:
           - adm
           - www-data
