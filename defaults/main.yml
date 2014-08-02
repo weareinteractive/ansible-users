@@ -5,18 +5,17 @@
 # users:
 #   - username: foobar (required)
 #     name: Foo Bar (required)
-#     email: foo@bar.com (required)
 #     authorized_keys: (required)
 #       - "xxx"
 #       - "xxx"
 #     group: staff
 #     groups: ["adm", "www-data"]
-#     shell: /bin/zsh
 #     ssh_key: "xxx"
 #
 
 # array of users to add
 users: []
-users_shell: /bin/bash
-users_group: staff
+# default primary group for users
+users_group: false
+# default secondary groups
 users_groups: []

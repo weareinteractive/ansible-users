@@ -2,7 +2,7 @@
 galaxy_info:
   author: franklin
   company: We Are Interactive
-  description: Creates and manages users
+  description: Adds and configures users
   min_ansible_version: 1.4
   license: MIT
   platforms:

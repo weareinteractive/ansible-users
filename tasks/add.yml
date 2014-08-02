@@ -1,0 +1,24 @@
+---
+
+- name: Adding users
+  user: >
+    name={{ item.username }}
+    comment='{{ item.name }}'
+    group={{ item.group if item.group is defined else (users_group if users_group != false else item.username) }}
+    groups={{ item.groups if item.groups is defined else users_groups | join(',')}}
+  with_items: users
+  tags:
+    - system
+    - users
+
+- name: Setting user's home permission
+  file: >
+    dest=/home/{{ item.username }}
+    owner={{ item.username }}
+    group={{ item.group if item.group is defined else (users_group if users_group != false else item.username) }}
+    mode=0755
+  with_items: users
+  tags:
+    - system
+    - users
+

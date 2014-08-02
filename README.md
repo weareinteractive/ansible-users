@@ -6,8 +6,8 @@
 > `users` is an [Ansible](http://www.ansible.com) role which:
 > 
 > * creates users
-> * manages authorized keys
-> * add ssh keys
+> * adds private ssh keys
+> * adds authorized keys
 
 ## Installation
 
@@ -35,20 +35,19 @@ $ git clone https://github.com/weareinteractive/ansible-role-users.git
 # users:
 #   - username: foobar (required)
 #     name: Foo Bar (required)
-#     email: foo@bar.com (required)
 #     authorized_keys: (required)
 #       - "xxx"
 #       - "xxx"
 #     group: staff
 #     groups: ["adm", "www-data"]
-#     shell: /bin/zsh
 #     ssh_key: "xxx"
 #
 
 # array of users to add
 users: []
-users_shell: /bin/bash
-users_group: staff
+# default primary group for users. `false` if username should be used
+users_group: false
+# default secondary groups
 users_groups: []
 ```
 
@@ -63,10 +62,8 @@ users_groups: []
     users:
       - username: foobar
         name: Foo Bar
-        email: foo@bar.com
         authorized_keys: []
     users_group: staff
-    users_shell: /bin/sh
     users_groups:
       - adm
       - www-data
