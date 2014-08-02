@@ -1,0 +1,36 @@
+---
+
+- name: Adding ssh directory
+  file: >
+    path=/home/{{ item.username }}/.ssh
+    owner={{ item.username }}
+    group={{ item.group if item.group is defined else (users_group if users_group != false else item.username) }}
+    state=directory
+    mode=0600
+  with_items: users
+  tags:
+    - system
+    - users
+
+- name: Adding ssh keys
+  template: >
+    src=home-user-ssh-private-key.j2
+    dest=/home/{{ item.username }}/.ssh/id_rsa
+    owner={{ item.username }}
+    group={{ item.group if item.group is defined else (users_group if users_group != false else item.username) }}
+    mode=0600
+  with_items: users
+  tags:
+    - system
+    - users
+
+- name: Adding authorized keys
+  authorized_key: >
+    user={{ item.0.username }}
+    key="{{ item.1 }}"
+  with_subelements:
+    - users
+    - authorized_keys
+  tags:
+    - system
+    - users

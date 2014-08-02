@@ -9,10 +9,8 @@
         users:
           - username: foobar
             name: Foo Bar
-            email: foo@bar.com
             authorized_keys: []
         users_group: staff
-        users_shell: /bin/sh
         users_groups:
           - adm
           - www-data
