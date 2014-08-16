@@ -3,12 +3,12 @@ galaxy_info:
   author: franklin
   company: We Are Interactive
   description: Adds and configures users
-  min_ansible_version: 1.4
+  min_ansible_version: 1.6
   license: MIT
   platforms:
     - name: Ubuntu
       versions:
-        - all
+        - All
   categories:
     - system
 # List your role dependencies here, one per line. Only

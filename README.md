@@ -1,7 +1,7 @@
 # Ansible Users Role
 
-[![Build Status](https://travis-ci.org/weareinteractive/ansible-role-users.png?branch=master)](https://travis-ci.org/weareinteractive/ansible-role-users)
-[![Stories in Ready](https://badge.waffle.io/weareinteractive/ansible-role-users.svg?label=ready&title=Ready)](http://waffle.io/weareinteractive/ansible-role-users)
+[![Build Status](https://travis-ci.org/weareinteractive/ansible-users.png?branch=master)](https://travis-ci.org/weareinteractive/ansible-users)
+[![Stories in Ready](https://badge.waffle.io/weareinteractive/ansible-users.svg?label=ready&title=Ready)](http://waffle.io/weareinteractive/ansible-users)
 
 > `users` is an [Ansible](http://www.ansible.com) role which:
 > 
@@ -26,7 +26,7 @@ $ arm install franklinkim.users
 Using `git`:
 
 ```
-$ git clone https://github.com/weareinteractive/ansible-role-users.git
+$ git clone https://github.com/weareinteractive/ansible-users.git
 ```
 
 ## Variables
@@ -72,8 +72,8 @@ users_groups: []
 ## Testing
 
 ```
-$ git clone https://github.com/weareinteractive/ansible-role-users.git
-$ cd ansible-role-users
+$ git clone https://github.com/weareinteractive/ansible-users.git
+$ cd ansible-users
 $ vagrant up
 ```
 
