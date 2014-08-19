@@ -8,6 +8,7 @@
   tags:
     - system
     - users
+    - manage
 
 - name: Configuring user
   user: >
@@ -18,7 +19,7 @@
   tags:
     - system
     - users
-
+    - manage
 
 - name: Setting user's home permission
   file: >
@@ -30,4 +31,5 @@
   tags:
     - system
     - users
+    - manage
 

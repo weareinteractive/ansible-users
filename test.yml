@@ -1,15 +1,13 @@
 ---
 
 - hosts: all
-  vars_files:
-    - 'defaults/main.yml'
-  tasks:
-    - include: 'tasks/main.yml'
-      vars:
-        users:
-          - username: foobar
-            name: Foo Bar
-            authorized_keys: []
-        users_groups:
-          - adm
-          - www-data
+  roles:
+    - franklinkim.users
+  vars:
+    users:
+      - username: foobar
+        name: Foo Bar
+        authorized_keys: []
+    users_groups:
+      - adm
+      - www-data

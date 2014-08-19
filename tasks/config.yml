@@ -11,6 +11,7 @@
   tags:
     - system
     - users
+    - config
 
 - name: Adding ssh keys
   template: >
@@ -23,6 +24,7 @@
   tags:
     - system
     - users
+    - config
 
 - name: Adding authorized keys
   authorized_key: >
@@ -34,3 +36,4 @@
   tags:
     - system
     - users
+    - config

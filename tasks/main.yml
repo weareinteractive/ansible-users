@@ -1,4 +1,4 @@
 ---
 
-- include: add.yml
+- include: manage.yml
 - include: config.yml
