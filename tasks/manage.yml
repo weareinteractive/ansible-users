@@ -14,7 +14,7 @@
   user: >
     name={{ item.username }}
     group={{ item.group if item.group is defined else (users_group if users_group != false else item.username) }}
-    groups={{ item.groups if item.groups is defined else users_groups | join(',')}}
+    groups={{ item.groups|join(',') if item.groups is defined else users_groups|join(',')}}
   with_items: users
   tags:
     - system
