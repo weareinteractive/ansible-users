@@ -36,6 +36,8 @@ Here is a list of all the default variables for this role, which are also availa
 ```
 # array of users to add
 users: []
+# users home directory
+users_home: /home
 # default user primary group for users
 users_group:
 # default user secondary groups
@@ -63,19 +65,19 @@ home_create: yes
 system: no
 # list of authorized keys 
 authorized_keys:
-  - "xxx\nxxx"
-  - "xxx\nxxx"
-# add a private key
-ssh_key: "xxx"
-# generate key file
+  - "xxx"
+  - "xxx"
+# copy a key
+ssh_key: "xxx\nxxx\n"
+# generate a key
 ssh_key_generate: no
-# generated key file password
+# generated key password
 ssh_key_password: ""
-# private key type 
+# generated key bit number
+ssh_key_bits: 2048
+# generated/copied key type 
 # (will also define the key file name as id_{{ ssh_key_type }})
 ssh_key_type: rsa
-# number of bits in SSH key to create
-ssh_key_bits: 2048
 ```
 
 ## Example playbook
@@ -87,8 +89,15 @@ ssh_key_bits: 2048
     - franklinkim.users
   vars:
     users:
-      - username: foobar
-        name: Foo Bar
+      # regular user
+      - username: foobar1
+        name: Foo bar
+      # user with generated key
+      - username: foobar2
+        ssh_key_generate: yes
+      # user with copies key
+      - username: foobar3
+        ssh_key: "xxx"
     users_group: staff
     users_groups:
       - adm

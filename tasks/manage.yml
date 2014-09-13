@@ -3,6 +3,7 @@
 - name: Adding users
   user: >
     name={{ item.username }}
+    home={{ item.home|default(users_home ~ '/' ~ item.username ) }}
     comment="{{ item.name|default('') }}"
     system={{ item.system|default('no') }}
     createhome={{ item.home_create|default('yes') }}
@@ -30,7 +31,7 @@
 
 - name: Setting user's home permission
   file: >
-    dest=~{{ item.username }}
+    dest={{ item.home|default(users_home ~ '/' ~ item.username) }}
     owner={{ item.username }}
     group={{ item.group if item.group is defined else (users_group if users_group else item.username) }}
     mode={{ item.home_mode if item.home_mode is defined else users_home_mode }}
