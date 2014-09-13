@@ -6,8 +6,8 @@
 > `users` is an [Ansible](http://www.ansible.com) role which:
 > 
 > * creates users
+> * adds/creates private ssh key
 > * configures authorized keys
-> * configures private ssh keys
 
 ## Installation
 
@@ -36,11 +36,11 @@ Here is a list of all the default variables for this role, which are also availa
 ```
 # array of users to add
 users: []
-# default primary group for users
+# default user primary group for users
 users_group:
-# default secondary groups
+# default user secondary groups
 users_groups: []
-# default user directory mode
+# default user home directory permissions
 users_home_mode: "0755"
 ```
 
@@ -50,19 +50,32 @@ A user might look like this:
 # user's name
 username: foobar    (required)
 # user's full name
-name: Foo Bar       (required)
-# list of authorized keys 
-authorized_keys:    (required)
-  - "xxx\nxxx"
-  - "xxx\nxxx"
+name: Foo Bar
 # primary group
 group: staff
 # list of secondary groups
 groups: ["adm", "www-data"]
 # home directory permissions
 home_mode: "0750"
-# private key
+# create home directory
+home_create: yes
+# create as system user
+system: no
+# list of authorized keys 
+authorized_keys:
+  - "xxx\nxxx"
+  - "xxx\nxxx"
+# add a private key
 ssh_key: "xxx"
+# generate key file
+ssh_key_generate: no
+# generated key file password
+ssh_key_password: ""
+# private key type 
+# (will also define the key file name as id_{{ ssh_key_type }})
+ssh_key_type: rsa
+# number of bits in SSH key to create
+ssh_key_bits: 2048
 ```
 
 ## Example playbook
@@ -76,12 +89,13 @@ ssh_key: "xxx"
     users:
       - username: foobar
         name: Foo Bar
-        authorized_keys: []
     users_group: staff
     users_groups:
       - adm
       - www-data
 ```
+
+*Note: Take a look at the `test.yml` for more examples*
 
 ## Testing
 
