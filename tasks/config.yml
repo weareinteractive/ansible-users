@@ -2,7 +2,7 @@
 
 - name: Adding ssh directory
   file: >
-    path=/home/{{ item.username }}/.ssh
+    path=~{{ item.username }}/.ssh
     owner={{ item.username }}
     group={{ item.group if item.group is defined else (users_group if users_group != false else item.username) }}
     state=directory
@@ -16,7 +16,7 @@
 - name: Adding ssh keys
   template: >
     src=home-user-ssh-private-key.j2
-    dest=/home/{{ item.username }}/.ssh/id_rsa
+    dest=~{{ item.username }}/.ssh/id_rsa
     owner={{ item.username }}
     group={{ item.group if item.group is defined else (users_group if users_group != false else item.username) }}
     mode=0600
