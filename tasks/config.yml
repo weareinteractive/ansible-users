@@ -2,24 +2,12 @@
 
 - name: Adding ssh directory
   file: >
-    path=/home/{{ item.username }}/.ssh
+    path={{ item.home|default(users_home ~ '/' ~ item.username) }}/.ssh
     owner={{ item.username }}
-    group={{ item.group if item.group is defined else (users_group if users_group != false else item.username) }}
+    group={{ item.group if item.group is defined else (users_group if users_group else item.username) }}
     state=directory
     mode=0700
-  with_items: users
-  tags:
-    - system
-    - users
-    - config
-
-- name: Adding ssh keys
-  template: >
-    src=home-user-ssh-private-key.j2
-    dest=/home/{{ item.username }}/.ssh/id_rsa
-    owner={{ item.username }}
-    group={{ item.group if item.group is defined else (users_group if users_group != false else item.username) }}
-    mode=0600
+  when: item.home_create is not defined or item.home_create == "yes"
   with_items: users
   tags:
     - system
@@ -27,13 +15,30 @@
     - config
 
 - name: Adding authorized keys
-  authorized_key: >
-    user={{ item.0.username }}
-    key="{{ item.1 }}"
-  with_subelements:
-    - users
-    - authorized_keys
+  template: >
+    src=home-user-ssh-authorized_keys.j2
+    dest={{ item.home|default(users_home ~ '/' ~ item.username) }}/.ssh/authorized_keys
+    owner={{ item.username }}
+    group={{ item.group if item.group is defined else (users_group if users_group else item.username) }}
+    mode=0600
+  when: item.home_create is not defined or item.home_create == "yes"
+  with_items: users
   tags:
     - system
     - users
     - config
+
+- name: Adding ssh key
+  template: >
+    src=home-user-ssh-private-key.j2
+    dest={{ item.home|default(users_home ~ '/' ~ item.username) }}/.ssh/id_{{ item.ssh_key_type|default('rsa') }}
+    owner={{ item.username }}
+    group={{ item.group if item.group is defined else (users_group if users_group else item.username) }}
+    mode=0600
+  when: (item.home_create is not defined or item.home_create == "yes") and item.ssh_key is defined
+  with_items: users
+  tags:
+    - system
+    - users
+    - config
+
