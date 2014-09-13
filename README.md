@@ -57,6 +57,8 @@ authorized_keys:    (required)
 group: staff
 # list of secondary groups
 groups: ["adm", "www-data"]
+# Change permission on users home directory
+homeperms: 701
 # private key
 ssh_key: "xxx"
 ```
