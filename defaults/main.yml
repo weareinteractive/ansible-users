@@ -5,6 +5,7 @@
 # users:
 #   - username: foobar (required)
 #     name: Foo Bar
+#     uid: 1000
 #     group: staff
 #     groups: ["adm", "www-data"]
 #     home_mode: "0750"

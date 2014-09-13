@@ -3,26 +3,17 @@
 - name: Adding users
   user: >
     name={{ item.username }}
+    uid={{ item.uid|default(omit) }}
     home={{ item.home|default(users_home ~ '/' ~ item.username ) }}
     comment="{{ item.name|default('') }}"
     system={{ item.system|default('no') }}
-    createhome={{ item.home_create|default('yes') }}
     generate_ssh_key={{ item.ssh_key_generate|default('no') }}
+    group={{ item.group if item.group is defined else (users_group if users_group else omit) }}
+    groups={{ item.groups|join(',') if item.groups is defined else users_groups|join(',')}}
     ssh_key_file=.ssh/id_{{ item.ssh_key_type|default('rsa') }}
     ssh_key_passphrase={{ item.ssh_key_password|default('') }}
     ssh_key_bits={{ item.ssh_key_bits|default(2048) }}
-  with_items: users
-  tags:
-    - system
-    - users
-    - manage
-
-- name: Configuring user
-  user: >
-    name={{ item.username }}
-    group={{ item.group if item.group is defined else (users_group if users_group else item.username) }}
-    groups={{ item.groups|join(',') if item.groups is defined else users_groups|join(',')}}
-    createhome={{ item.home_create|default("yes") }}
+    createhome={{ item.home_create|default('yes') }}
   with_items: users
   tags:
     - system
