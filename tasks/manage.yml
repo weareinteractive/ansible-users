@@ -26,7 +26,7 @@
     dest=~{{ item.username }}
     owner={{ item.username }}
     group={{ item.group if item.group is defined else (users_group if users_group != false else item.username) }}
-    mode=0755
+    mode={{ item.homeperms |default('0755') }}
   with_items: users
   tags:
     - system
