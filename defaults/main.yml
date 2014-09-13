@@ -10,12 +10,15 @@
 #       - "xxx"
 #     group: staff
 #     groups: ["adm", "www-data"]
+#     home_mode: "0750"
 #     ssh_key: "xxx"
 #
 
 # array of users to add
 users: []
 # default primary group for users
-users_group: false
+users_group:
 # default secondary groups
 users_groups: []
+# default home directory permissions
+users_home_mode: "0755"

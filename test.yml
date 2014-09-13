@@ -5,8 +5,12 @@
     - franklinkim.users
   vars:
     users:
-      - username: foobar
-        name: Foo Bar
+      - username: foobar1
+        name: Foo Bar 1
+        authorized_keys: []
+      - username: foobar2
+        name: Foo Bar 2
+        home_mode: "0750"
         authorized_keys: []
     users_groups:
       - adm

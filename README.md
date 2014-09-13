@@ -37,9 +37,11 @@ Here is a list of all the default variables for this role, which are also availa
 # array of users to add
 users: []
 # default primary group for users
-users_group: false
+users_group:
 # default secondary groups
 users_groups: []
+# default user directory mode
+users_home_mode: "0755"
 ```
 
 A user might look like this:
@@ -57,8 +59,8 @@ authorized_keys:    (required)
 group: staff
 # list of secondary groups
 groups: ["adm", "www-data"]
-# Change permission on users home directory
-homeperms: 701
+# home directory permissions
+home_mode: "0750"
 # private key
 ssh_key: "xxx"
 ```

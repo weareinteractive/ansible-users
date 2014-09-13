@@ -4,7 +4,7 @@
   file: >
     path=~{{ item.username }}/.ssh
     owner={{ item.username }}
-    group={{ item.group if item.group is defined else (users_group if users_group != false else item.username) }}
+    group={{ item.group if item.group is defined else (users_group if users_group else item.username) }}
     state=directory
     mode=0700
   with_items: users
@@ -18,7 +18,7 @@
     src=home-user-ssh-private-key.j2
     dest=~{{ item.username }}/.ssh/id_rsa
     owner={{ item.username }}
-    group={{ item.group if item.group is defined else (users_group if users_group != false else item.username) }}
+    group={{ item.group if item.group is defined else (users_group if users_group else item.username) }}
     mode=0600
   with_items: users
   tags:

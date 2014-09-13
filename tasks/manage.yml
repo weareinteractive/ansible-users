@@ -13,7 +13,7 @@
 - name: Configuring user
   user: >
     name={{ item.username }}
-    group={{ item.group if item.group is defined else (users_group if users_group != false else item.username) }}
+    group={{ item.group if item.group is defined else (users_group if users_group else item.username) }}
     groups={{ item.groups|join(',') if item.groups is defined else users_groups|join(',')}}
   with_items: users
   tags:
@@ -25,8 +25,8 @@
   file: >
     dest=~{{ item.username }}
     owner={{ item.username }}
-    group={{ item.group if item.group is defined else (users_group if users_group != false else item.username) }}
-    mode={{ item.homeperms |default('0755') }}
+    group={{ item.group if item.group is defined else (users_group if users_group else item.username) }}
+    mode={{ item.home_mode if item.home_mode is defined else users_home_mode }}
   with_items: users
   tags:
     - system
