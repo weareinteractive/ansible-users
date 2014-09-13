@@ -11,6 +11,12 @@
 #     group: staff
 #     groups: ["adm", "www-data"]
 #     ssh_key: "xxx"
+#     createhome: yes (optional)
+#     uid: 1023 (optional)
+#     generate_key: no (optional)
+#     homedir: '/path/to/home/' (optional)
+#     password: 'hashed-string-for-shadow-file' (optional)
+#     system: no (optional)
 #
 
 # array of users to add

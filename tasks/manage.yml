@@ -4,6 +4,12 @@
   user: >
     name={{ item.username }}
     comment='{{ item.name }}'
+    createhome={{ item.createhome |default('yes') }}
+    uid={{ item.uid |default(omit) }}
+    generate_ssh_key={{ item.generate_key |default('no') }}
+    home={{ item.homedir |default(omit) }}
+    password={{ item.password |default(omit) }}
+    system={{ item.systemaccount |default('no') }}
   with_items: users
   tags:
     - system
