@@ -1,4 +1,15 @@
 ---
 
 - include: manage.yml
+  tags:
+    - system
+    - users
+    - manage
+    - users-manage
+
 - include: config.yml
+  tags:
+    - system
+    - users
+    - config
+    - users-config
