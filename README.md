@@ -1,10 +1,12 @@
 # Ansible Users Role
 
-[![Build Status](https://travis-ci.org/weareinteractive/ansible-users.png?branch=master)](https://travis-ci.org/weareinteractive/ansible-users)
-[![Stories in Ready](https://badge.waffle.io/weareinteractive/ansible-users.svg?label=ready&title=Ready)](http://waffle.io/weareinteractive/ansible-users)
+[![Build Status](https://img.shields.io/travis/weareinteractive/ansible-users.svg)](https://travis-ci.org/weareinteractive/ansible-users)
+[![Galaxy](http://img.shields.io/badge/galaxy-franklinkim.supervisor-blue.svg)](https://galaxy.ansible.com/list#/roles/1383)
+[![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-users.svg)](https://github.com/weareinteractive/ansible-users)
+[![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-users.svg)](https://github.com/weareinteractive/ansible-users)
 
 > `users` is an [Ansible](http://www.ansible.com) role which:
-> 
+>
 > * creates users
 > * adds/creates private ssh key
 > * configures authorized keys
@@ -17,17 +19,21 @@ Using `ansible-galaxy`:
 $ ansible-galaxy install franklinkim.users
 ```
 
-Using `arm` ([Ansible Role Manager](https://github.com/mirskytech/ansible-role-manager/)):
+Using `requirements.yml`:
 
 ```
-$ arm install franklinkim.users
+- src: franklinkim.users
 ```
 
 Using `git`:
 
 ```
-$ git clone https://github.com/weareinteractive/ansible-users.git
+$ git clone https://github.com/weareinteractive/ansible-users.git franklinkim.users
 ```
+
+## Dependencies
+
+* Ansible 1.9
 
 ## Variables
 
@@ -63,7 +69,7 @@ home_mode: "0750"
 home_create: yes
 # create as system user
 system: no
-# list of authorized keys 
+# list of authorized keys
 authorized_keys:
   - "xxx"
   - "xxx"
@@ -75,7 +81,7 @@ ssh_key_generate: no
 ssh_key_password: ""
 # generated key bit number
 ssh_key_bits: 2048
-# generated/copied key type 
+# generated/copied key type
 # (will also define the key file name as id_{{ ssh_key_type }})
 ssh_key_type: rsa
 ```
@@ -85,7 +91,7 @@ ssh_key_type: rsa
 ```
 - host: all
   sudo: yes
-  roles: 
+  roles:
     - franklinkim.users
   vars:
     users:
