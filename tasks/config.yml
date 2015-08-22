@@ -7,7 +7,7 @@
     group: "{{ item.group if item.group is defined else (users_group if users_group else item.username) }}"
     state: directory
     mode: 0700
-  when: item.home_create is not defined or item.home_create == "yes"
+  when: item.home_create is not defined or item.home_create
   with_items: users
 
 - name: Adding authorized keys
@@ -17,7 +17,7 @@
     owner: "{{ item.username }}"
     group: "{{ item.group if item.group is defined else (users_group if users_group else item.username) }}"
     mode: 0600
-  when: item.home_create is not defined or item.home_create == "yes"
+  when: item.home_create is not defined or item.home_create
   with_items: users
 
 - name: Adding ssh key
@@ -27,5 +27,5 @@
     owner: "{{ item.username }}"
     group: "{{ item.group if item.group is defined else (users_group if users_group else item.username) }}"
     mode: 0600
-  when: (item.home_create is not defined or item.home_create == "yes") and item.ssh_key is defined
+  when: (item.home_create is not defined or item.home_create) and item.ssh_key is defined
   with_items: users
