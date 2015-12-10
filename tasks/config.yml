@@ -11,14 +11,13 @@
   with_items: users
 
 - name: Adding authorized keys
-  template:
-    src: home-user-ssh-authorized_keys.j2
-    dest: "{{ item.home|default(users_home ~ '/' ~ item.username) }}/.ssh/authorized_keys"
-    owner: "{{ item.username }}"
-    group: "{{ item.group if item.group is defined else (users_group if users_group else item.username) }}"
-    mode: 0600
-  when: item.home_create is not defined or item.home_create
-  with_items: users
+  authorized_key:
+    key: "{{ item.1 }}"
+    user: "{{ item.0.username }}"
+  when: item.0.home_create is not defined or item.0.home_create
+  with_subelements:
+    - users
+    - authorized_keys
 
 - name: Adding ssh key
   template:
