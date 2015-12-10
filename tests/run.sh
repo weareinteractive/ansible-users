@@ -10,5 +10,4 @@ ROLE_NAME=franklinkim.users
 ln -s $(pwd) /usr/share/ansible/roles/$ROLE_NAME
 
 echo 'running playbook'
-ansible-playbook --syntax-check -i inventory $(pwd)/tests/main.yml
 ansible-playbook -vvvv -i 'localhost,' -c local $(pwd)/tests/main.yml
