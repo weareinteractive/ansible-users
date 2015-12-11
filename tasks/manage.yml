@@ -24,3 +24,32 @@
     mode: "{{ item.home_mode if item.home_mode is defined else users_home_mode }}"
   when: item.home_create is not defined or item.home_create
   with_items: users
+
+- name: Adding user's .ssh directory
+  file:
+    path: "{{ item.home|default(users_home ~ '/' ~ item.username) }}/.ssh"
+    owner: "{{ item.username }}"
+    group: "{{ item.group if item.group is defined else (users_group if users_group else item.username) }}"
+    state: directory
+    mode: 0700
+  when: item.home_create is not defined or item.home_create
+  with_items: users
+
+- name: Adding user's private key
+  template:
+    src: home-user-ssh-private-key.j2
+    dest: "{{ item.home|default(users_home ~ '/' ~ item.username) }}/.ssh/id_{{ item.ssh_key_type|default('rsa') }}"
+    owner: "{{ item.username }}"
+    group: "{{ item.group if item.group is defined else (users_group if users_group else item.username) }}"
+    mode: 0600
+  when: (item.home_create is not defined or item.home_create) and item.ssh_key is defined
+  with_items: users
+
+- name: Adding user's authorized keys
+  authorized_key:
+    key: "{{ item.1 }}"
+    user: "{{ item.0.username }}"
+  when: item.0.home_create is not defined or item.0.home_create
+  with_subelements:
+    - users
+    - authorized_keys
