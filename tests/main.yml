@@ -3,6 +3,7 @@
 - hosts: all
   sudo: yes
   roles:
+    - franklinkim.openssl
     - franklinkim.users
   vars:
     users:
