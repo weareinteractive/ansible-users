@@ -4,7 +4,7 @@
 ROLE_NAME=franklinkim.users
 
 # install dependencies
-apt-get install openssh-client openssh-server
+apt-get install -y openssh-client openssh-server
 #ansible-galaxy install franklinkim.openssl
 
 # create role symnlink
