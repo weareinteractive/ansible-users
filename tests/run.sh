@@ -4,7 +4,7 @@
 ROLE_NAME=franklinkim.users
 
 # install dependencies
-# ansible-galaxy install franklinkim.users
+ansible-galaxy install franklinkim.openssl
 
 # create role symnlink
 ln -s $(pwd) /usr/share/ansible/roles/$ROLE_NAME
