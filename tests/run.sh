@@ -4,6 +4,7 @@
 ROLE_NAME=franklinkim.users
 
 # install dependencies
+apt-get update
 apt-get install -y openssh-client openssh-server
 #ansible-galaxy install franklinkim.openssl
 
