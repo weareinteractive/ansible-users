@@ -2,6 +2,7 @@
 
 language: ruby
 sudo: required
+dist: trusty
 services:
   - docker
 install:
