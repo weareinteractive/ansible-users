@@ -1,3 +1,13 @@
+<a name="1.4.0"></a>
+## 1.4.0 (2016-04-14)
+
+
+#### Features
+
+*   make sure groups are available ([232fe41b](https://github.com/weareinteractive/ansible-users/commit/232fe41b47372177492789e7a9f1ee5bb851de2e))
+
+
+
 <a name="1.3.0"></a>
 ## 1.3.0 (2015-12-11)
 
