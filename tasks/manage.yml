@@ -22,7 +22,7 @@
     ssh_key_passphrase: "{{ item.ssh_key_password|default('') }}"
     ssh_key_bits: "{{ item.ssh_key_bits|default(2048) }}"
     createhome: "{{ item.home_create|default(omit) }}"
-  with_items: users
+  with_items: "{{ users }}"
 
 - name: Setting user's home permission
   file:
@@ -31,7 +31,7 @@
     group: "{{ item.group if item.group is defined else (users_group if users_group else item.username) }}"
     mode: "{{ item.home_mode if item.home_mode is defined else users_home_mode }}"
   when: item.home_create is not defined or item.home_create
-  with_items: users
+  with_items: "{{ users }}"
 
 - name: Adding user's .ssh directory
   file:
@@ -41,7 +41,7 @@
     state: directory
     mode: 0700
   when: item.home_create is not defined or item.home_create
-  with_items: users
+  with_items: "{{ users }}"
 
 - name: Adding user's private key
   template:
@@ -51,7 +51,7 @@
     group: "{{ item.group if item.group is defined else (users_group if users_group else item.username) }}"
     mode: 0600
   when: (item.home_create is not defined or item.home_create) and item.ssh_key is defined
-  with_items: users
+  with_items: "{{ users }}"
 
 - name: Adding user's authorized keys
   authorized_key:
@@ -59,5 +59,5 @@
     user: "{{ item.0.username }}"
   when: item.0.home_create is not defined or item.0.home_create
   with_subelements:
-    - users
+    - "{{ users }}"
     - authorized_keys
