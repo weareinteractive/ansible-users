@@ -2,7 +2,7 @@
 
 - name: Adding primary group
   group: name="{{ users_group }}" state=present
-  when: users_group is defined
+  when: users_group is defined and users_group is not none and users_group != ''
 
 - name: Adding secondary groups
   group: name="{{ item }}" state=present
