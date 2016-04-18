@@ -1,3 +1,13 @@
+<a name="1.5.0"></a>
+## 1.5.0 (2016-04-18)
+
+
+#### Bug Fixes
+
+*   fix 'when' clause when adding the primary user group ([9fec282d](https://github.com/weareinteractive/ansible-users/commit/9fec282d4635eeb808837c4ce9ddfed25ce7bffd))
+*   fix deprecation warnings in ansible 2.0
+
+
 <a name="1.4.0"></a>
 ## 1.4.0 (2016-04-14)
 
