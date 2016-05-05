@@ -23,6 +23,7 @@
     ssh_key_passphrase: "{{ item.ssh_key_password|default('') }}"
     ssh_key_bits: "{{ item.ssh_key_bits|default(2048) }}"
     createhome: "{{ item.home_create|default(omit) }}"
+    shell: "{{ item.shell|default('/bin/sh') }}"
   with_items: "{{ users }}"
 
 - name: Setting user's home permission
