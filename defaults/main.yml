@@ -1,10 +1,12 @@
 ---
+# @see http://docs.ansible.com/ansible/user_module.html
 #
 # users:
 #   - username: foobar              (required)
 #     name: Foo Bar
 #     uid: 1000
 #     group: staff
+#     password: xxxxx
 #     groups: ["adm", "www-data"]
 #     home_mode: "0750"
 #     home_create: yes
@@ -16,6 +18,7 @@
 #     ssh_key_password: ""
 #     ssh_key_generate: no
 #     ssh_key: "xxx"
+#     shell: /bin/bash
 #
 
 # array of users to add
