@@ -1,3 +1,13 @@
+<a name="1.6.0"></a>
+## 1.6.0 (2016-05-09)
+
+
+#### Features
+
+*   add password and shell variables ([93b48f0e](https://github.com/weareinteractive/ansible-users/commit/93b48f0eb0e9c547717a5679f9dbc14a18d32b17))
+
+
+
 <a name="1.5.0"></a>
 ## 1.5.0 (2016-04-18)
 

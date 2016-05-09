@@ -41,12 +41,14 @@ Here is a list of all the default variables for this role, which are also availa
 
 ```yaml
 ---
+# @see http://docs.ansible.com/ansible/user_module.html
 #
 # users:
 #   - username: foobar              (required)
 #     name: Foo Bar
 #     uid: 1000
 #     group: staff
+#     password: xxxxx
 #     groups: ["adm", "www-data"]
 #     home_mode: "0750"
 #     home_create: yes
@@ -58,6 +60,7 @@ Here is a list of all the default variables for this role, which are also availa
 #     ssh_key_password: ""
 #     ssh_key_generate: no
 #     ssh_key: "xxx"
+#     shell: /bin/bash
 #
 
 # array of users to add
@@ -124,16 +127,17 @@ This is an example playbook:
 
 ```
 
+
 ## Testing
 
 ```shell
 $ git clone https://github.com/weareinteractive/ansible-users.git
 $ cd ansible-users
-$ vagrant up
+$ make test
 ```
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests and examples for any new or changed functionality.
+In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests and examples for any new or changed functionality.
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
