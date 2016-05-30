@@ -6,7 +6,7 @@
 #     name: Foo Bar
 #     uid: 1000
 #     group: staff
-#     password: xxxxx
+#     password: xxxxx               (a hash created with: mkpasswd)
 #     groups: ["adm", "www-data"]
 #     home_mode: "0750"
 #     home_create: yes

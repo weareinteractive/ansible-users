@@ -48,7 +48,7 @@ Here is a list of all the default variables for this role, which are also availa
 #     name: Foo Bar
 #     uid: 1000
 #     group: staff
-#     password: xxxxx
+#     password: xxxxx               (a hash created with: mkpasswd)
 #     groups: ["adm", "www-data"]
 #     home_mode: "0750"
 #     home_create: yes
