@@ -26,14 +26,15 @@
 users: []
 # users home directory
 users_home: /home
-# default user primary group for users
+# default user's primary group for users
 users_group:
-# default user secondary groups
+# default user's secondary groups
 users_groups: []
-# default user home directory permissions
+# default user's home directory permissions
 users_home_mode: "0755"
-
-# you can set these variables to define the default values for all users
-users_default_ssh_key_type: rsa
-users_default_ssh_key_bits: 2048
-users_default_authorized_keys_exclusive: no
+# default user's ssh key type
+users_ssh_key_type: rsa
+# default user's ssh key bits
+users_ssh_key_bits: 2048
+# default user's setting for authorized keys exclusive
+users_authorized_keys_exclusive: no

@@ -31,4 +31,4 @@
     users_group: staff
     users_groups:
       - www-data
-    users_default_authorized_keys_exclusive: yes
+    users_authorized_keys_exclusive: yes
