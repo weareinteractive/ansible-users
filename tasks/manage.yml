@@ -66,3 +66,10 @@
     exclusive: "{{ item.authorized_keys_exclusive | default(users_authorized_keys_exclusive) }}"
   when: item.home_create is not defined or item.home_create
   with_items: "{{ users }}"
+
+- name: Removing users
+  user:
+    name: "{{ item }}"
+    state: absent
+    remove: yes
+  with_items: "{{ users_remove }}"
