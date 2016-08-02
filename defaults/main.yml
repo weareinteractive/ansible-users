@@ -12,7 +12,8 @@
 #     home_create: yes
 #     home: /path/to/user/home
 #     system: no
-#     authorized_keys: []           (required)
+#     authorized_keys: []
+#     authorized_keys_exclusive: yes
 #     ssh_key_type: rsa
 #     ssh_key_bits: 2048
 #     ssh_key_password: ""
@@ -21,13 +22,21 @@
 #     shell: /bin/bash
 #
 
-# array of users to add
+# list of users to add
 users: []
 # users home directory
 users_home: /home
-# default user primary group for users
+# default user's primary group for users
 users_group:
-# default user secondary groups
+# default user's secondary groups
 users_groups: []
-# default user home directory permissions
+# default user's home directory permissions
 users_home_mode: "0755"
+# default user's ssh key type
+users_ssh_key_type: rsa
+# default user's ssh key bits
+users_ssh_key_bits: 2048
+# default user's setting for authorized keys exclusive
+users_authorized_keys_exclusive: no
+# list of users to be removed
+users_remove: []
