@@ -1,3 +1,14 @@
+<a name="1.7.0"></a>
+## 1.7.0 (2016-08-02)
+
+
+#### Features
+
+*   add `users_remove` ([d06f860d](https://github.com/weareinteractive/ansible-users/commit/d06f860d064da9115331224ec16fcfe5db91fa82))
+*   optimize authorized keys management ([382d7c2e](https://github.com/weareinteractive/ansible-users/commit/382d7c2e9f7edc987c2f8b0679fc27cdfdc9c6b6))
+
+
+
 <a name="1.6.1"></a>
 ### 1.6.1 (2016-05-30)
 
