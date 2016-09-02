@@ -20,6 +20,7 @@
 #     ssh_key_generate: no
 #     ssh_key: "xxx"
 #     shell: /bin/bash
+#     sudo: true
 #
 
 # list of users to add
@@ -40,3 +41,5 @@ users_ssh_key_bits: 2048
 users_authorized_keys_exclusive: no
 # list of users to be removed
 users_remove: []
+# package name
+users_sudo_package: sudo
