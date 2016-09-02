@@ -67,9 +67,47 @@
   when: item.home_create is not defined or item.home_create
   with_items: "{{ users }}"
 
+- name: Ensure sudo package if configured
+  action: "{{ ansible_pkg_mgr }} pkg={{ users_sudo_package }} state=present"
+  when: item.sudo is defined and item.sudo == true
+  with_items: "{{ users }}"
+
+- name: Checking sudo's directory
+  file:
+    path: /etc/sudoers.d
+    state: directory
+    mode: "0750"
+  when: item.sudo is defined and item.sudo == true
+  with_items: "{{ users }}"
+
+- name: Create sudoers configuration
+  template:
+    src: "sudo-users.j2"
+    dest: "/etc/sudoers.d/{{ item.username }}"
+    validate: "/usr/sbin/visudo -csf %s"
+    owner: root
+    group: root
+    mode: "0440"
+  when: item.sudo is defined and item.sudo == true
+  with_items: "{{ users }}"
+
+- name: Disabling sudo users
+  file:
+    path: "/etc/sudoers.d/{{ item.username }}"
+    state: absent
+  when: item.sudo is defined and item.sudo == false
+  with_items:
+    - "{{ users }}"
+
 - name: Removing users
   user:
     name: "{{ item }}"
     state: absent
     remove: yes
+  with_items: "{{ users_remove }}"
+
+- name: "Remove sudoers configuration under /etc/sudoers.d"
+  file:
+    path: "/etc/sudoers.d/{{ users_remove }}"
+    state: absent
   with_items: "{{ users_remove }}"
