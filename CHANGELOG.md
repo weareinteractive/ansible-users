@@ -1,3 +1,13 @@
+<a name="1.7.1"></a>
+### 1.7.1 (2017-02-14)
+
+
+#### Features
+
+*   add update_password flag ([d3511ffe](https://github.com/weareinteractive/ansible-users/commit/d3511ffee448b691965ad4b976a7b32e7dc8824d))
+
+
+
 <a name="1.7.0"></a>
 ## 1.7.0 (2016-08-02)
 
