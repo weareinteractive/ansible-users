@@ -62,6 +62,7 @@ Here is a list of all the default variables for this role, which are also availa
 #     ssh_key_generate: no
 #     ssh_key: "xxx"
 #     shell: /bin/bash
+#     update_password: always
 #
 
 # list of users to add
