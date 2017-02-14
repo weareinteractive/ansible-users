@@ -20,6 +20,7 @@
 #     ssh_key_generate: no
 #     ssh_key: "xxx"
 #     shell: /bin/bash
+#     update_password: always
 #
 
 # list of users to add
