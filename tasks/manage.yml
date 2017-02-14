@@ -28,6 +28,7 @@
     ssh_key_bits: "{{ item.ssh_key_bits | default(users_ssh_key_bits) }}"
     createhome: "{{ item.home_create | default(omit) }}"
     shell: "{{ item.shell | default(omit) }}"
+    update_password: "{{ item.update_password | default(omit) }}"
   with_items: "{{ users }}"
 
 - name: Setting user's home permission
