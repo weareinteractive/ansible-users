@@ -1,3 +1,14 @@
+<a name="1.8.0"></a>
+## 1.8.0 (2017-06-21)
+
+
+#### Features
+
+*   bump ansible version to 2.0 ([b4c39b06](https://github.com/weareinteractive/ansible-users/commit/b4c39b0653ac425a34b5162af0309465cd7284c8))
+*   add append flag to users ([c4bffe1b](https://github.com/weareinteractive/ansible-users/commit/c4bffe1b7cc44d557b2b88ac1925f19c92f85f6d))
+
+
+
 <a name="1.7.1"></a>
 ### 1.7.1 (2017-02-14)
 
