@@ -17,6 +17,7 @@
       - username: foobar_groups
         groups:
           - users
+        append: yes
       - username: foobar_groups_reset
         groups: []
         group: foobar_groups_reset
