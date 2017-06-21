@@ -3,7 +3,7 @@ galaxy_info:
   author: franklin
   company: We Are Interactive
   description: Manages users
-  min_ansible_version: 1.9
+  min_ansible_version: 2.0
   license: MIT
   #
   # Below are all platforms currently available. Just uncomment
@@ -95,8 +95,8 @@ galaxy_info:
     - users
     - user
     - ssh
-dependencies: []
   # List your role dependencies here, one per line. Only
   # dependencies available via galaxy should be listed here.
   # Be sure to remove the '[]' above if you add dependencies
   # to this list.
+dependencies: []
