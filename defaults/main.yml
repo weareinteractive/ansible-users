@@ -8,6 +8,7 @@
 #     group: staff
 #     password: xxxxx               (a hash created with: mkpasswd)
 #     groups: ["adm", "www-data"]
+#     append: no                    (only append groups, leave others)
 #     home_mode: "0750"
 #     home_create: yes
 #     home: /path/to/user/home
