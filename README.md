@@ -57,6 +57,8 @@ Here is a list of all the default variables for this role, which are also availa
 #     system: no
 #     authorized_keys: []
 #     authorized_keys_exclusive: yes
+#     authorized_keys_path: ""
+#     authorized_keys_manage_dir: yes
 #     ssh_key_type: rsa
 #     ssh_key_bits: 2048
 #     ssh_key_password: ""
@@ -82,6 +84,10 @@ users_ssh_key_type: rsa
 users_ssh_key_bits: 2048
 # default user's setting for authorized keys exclusive
 users_authorized_keys_exclusive: no
+# default user's setting for authorized keys path. Special marker "###USERNAME###" will be replaced with the username.
+users_authorized_keys_path:
+# whether this module should manage the directory of the authorized keys file
+users_authorized_keys_manage_dir: yes
 # list of users to be removed
 users_remove: []
 
