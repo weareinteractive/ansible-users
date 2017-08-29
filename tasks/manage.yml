@@ -68,7 +68,7 @@
     path: "{{ item.authorized_keys_path | default(users_authorized_keys_path) | regex_replace('###USERNAME###', item.username) }}"
     manage_dir: "{{ item.authorized_keys_manage_dir | default(users_authorized_keys_manage_dir) }}"
     exclusive: "{{ item.authorized_keys_exclusive | default(users_authorized_keys_exclusive) }}"
-  when: item.home_create is not defined or item.home_create or item.authorized_keys_path or users_authorized_keys_path
+  when: item.home_create is not defined or item.home_create or (item.authorized_keys_path is defined and item.authorized_keys_path) or users_authorized_keys_path
   with_items: "{{ users }}"
 
 - name: Removing users
