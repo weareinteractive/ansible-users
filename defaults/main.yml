@@ -1,4 +1,6 @@
 ---
+# This role takes advantage of Ansible's user role.
+# All user related properties will fall back to Ansible's default values.
 # @see http://docs.ansible.com/ansible/user_module.html
 #
 # users:
