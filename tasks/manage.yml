@@ -53,7 +53,7 @@
 
 - name: Adding user's private key
   template:
-    src: home-user-ssh-private-key.j2
+    src: home/user/ssh/private-key.j2
     dest: "{{ item.home | default(users_home ~ '/' ~ item.username) }}/.ssh/id_{{ item.ssh_key_type | default('rsa') }}"
     owner: "{{ item.username }}"
     group: "{{ item.group if item.group is defined else (users_group if users_group else item.username) }}"
