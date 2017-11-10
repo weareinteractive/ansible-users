@@ -3,7 +3,7 @@ galaxy_info:
   author: franklin
   company: We Are Interactive
   description: Manages users
-  min_ansible_version: 2.0
+  min_ansible_version: 2.4
   license: MIT
   #
   # Below are all platforms currently available. Just uncomment
