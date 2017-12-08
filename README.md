@@ -33,7 +33,7 @@ $ git clone https://github.com/weareinteractive/ansible-users.git franklinkim.us
 
 ## Dependencies
 
-* Ansible >= 1.9
+* Ansible >= 2.4
 
 ## Variables
 
@@ -41,6 +41,8 @@ Here is a list of all the default variables for this role, which are also availa
 
 ```yaml
 ---
+# This role takes advantage of Ansible's user role.
+# All user related properties will fall back to Ansible's default values.
 # @see http://docs.ansible.com/ansible/user_module.html
 #
 # users:
@@ -106,7 +108,6 @@ This is an example playbook:
         authorized_keys:
           - "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA6NF8iallvQVp22WDkTkyrtvp9eWW6A8YVr+kz4TjGYe7gHzIw+niNltGEFHzD8+v1I2YJ6oXevct1YeS0o9HZyN1Q9qgCgzUFtdOKLv6IedplqoPkcmF0aYet2PkEDo3MlTBckFXPITAMzF8dJSIFo9D8HfdOV0IAdx4O7PtixWKn5y2hMNG0zQPyUecp4pzC6kivAIhyfHilFR61RGL+GPXQ2MWZWFYbAGjyiYJnAmCP3NOTd0jMZEnDkbUvxhMmBYSdETk1rRgm+R4LOzFUGaHqHDLKLX+FIPKcF96hrucXzcWyLbIbEgE98OHlnVYCzRdK8jlqm8tehUc9c9WhQ== vagrant insecure public key"
         home_create: yes
-        state: absent
       - username: foobar_nohome
         home_create: no
       - username: foobar_groups
