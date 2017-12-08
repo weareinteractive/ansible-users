@@ -1,6 +1,6 @@
 ---
 
-- include: manage.yml
+- import_tasks: manage.yml
   tags:
     - system
     - users
