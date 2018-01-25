@@ -1,3 +1,14 @@
+<a name="1.9.2"></a>
+### 1.9.2 (2018-01-25)
+
+
+#### Features
+
+*   change gitignore rules ([6e50c90e](https://github.com/weareinteractive/ansible-users/commit/6e50c90e2d7a43392492bb0a9e662dd5f3da6188))
+*   add makefile format ([5c51d0fe](https://github.com/weareinteractive/ansible-users/commit/5c51d0fe1d99240a95dbfa791da62de3e2c57ab6))
+
+
+
 <a name="1.9.1"></a>
 ### 1.9.1 (2017-11-10)
 
