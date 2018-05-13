@@ -5,6 +5,10 @@ Vagrant.configure("2") do |config|
   config.vbguest.no_remote = true
   config.vbguest.auto_update = false
 
+  config.vm.define 'xenial' do |instance|
+    instance.vm.box = 'ubuntu/xenial64'
+  end
+
   config.vm.define 'trusty' do |instance|
     instance.vm.box = 'ubuntu/trusty64'
   end
@@ -14,6 +18,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "tests/main.yml"
     ansible.verbose = 'vv'
-    ansible.sudo = true
+    ansible.become = true
   end
 end
