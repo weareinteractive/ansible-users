@@ -15,13 +15,15 @@
 #     home_create: yes
 #     home: /path/to/user/home
 #     system: no
-#     authorized_keys: []
+#     authorized_keys:
+#       - "xxx"
+#       - "{{ lookup('file', '/path/to/id_rsa.pub') }}"
 #     authorized_keys_exclusive: yes
 #     ssh_key_type: rsa
 #     ssh_key_bits: 2048
 #     ssh_key_password: ""
 #     ssh_key_generate: no
-#     ssh_key: "xxx"
+#     ssh_key: "xxx" or "{{ lookup('file', '/path/to/id_rsa') }}"
 #     shell: /bin/bash
 #     update_password: always
 #
