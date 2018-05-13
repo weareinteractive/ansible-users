@@ -1,3 +1,6 @@
+*.log
+*.retry
 .DS_Store
 .vagrant
-tests/*.retry
+.vscode
+.idea
