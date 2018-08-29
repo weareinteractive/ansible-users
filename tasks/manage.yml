@@ -69,6 +69,16 @@
   when: item.home_create is not defined or item.home_create
   with_items: "{{ users }}"
 
+- name: Adding user's files
+  copy:
+    src: "{{ item.1 }}"
+    dest: "{{ item.0.home }}/{{ item.1 | basename }}"
+    owner: "{{ item.0.username }}"
+    group: "{{ item.0.group if item.0.group is defined else (users_group if users_group else item.0.username) }}"
+  with_subelements:
+    - "{{ users }}"
+    - user_files
+
 - name: Removing users
   user:
     name: "{{ item }}"
