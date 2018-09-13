@@ -43,6 +43,10 @@ script:
 
   - docker exec -t -e RUN=${install_deps} "$(cat ${container_id})" env TERM=xterm bash -c 'echo "${RUN}"'
 
+  - docker exec -t -e RUN="${install_deps}" "$(cat ${container_id})" env TERM=xterm bash -c 'echo "${RUN}"'
+
+  #- docker exec -t -e RUN=${install_deps} "$(cat ${container_id})" env TERM=xterm bash -c '${RUN}'
+
 #  # Ansible syntax check.
 #  - 'docker exec -t "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${role}/tests/main.yml --syntax-check'
 #
