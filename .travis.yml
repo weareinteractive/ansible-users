@@ -38,29 +38,26 @@ script:
   # Start The Built Container In The Background
   - docker run -d -v "${PWD}":/etc/ansible/roles/${role}:ro ${run_opts} ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" "${init}" > "${container_id}"
 
+  # Print ansible version
+  - docker exec -t "$(cat ${container_id})" env TERM=xterm ansible --version
+
   # Install dependencies
-  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo "foo"'
+  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'apt-get update && apt-get install -y ssh'
 
-  - docker exec -t -e RUN=${install_deps} "$(cat ${container_id})" env TERM=xterm bash -c 'echo "${RUN}"'
+  # Ansible syntax check.
+  - 'docker exec -t "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${role}/tests/main.yml --syntax-check'
 
-  - docker exec -t -e RUN="${install_deps}" "$(cat ${container_id})" env TERM=xterm bash -c 'echo "${RUN}"'
+  # Test role.
+  - 'docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/roles/${role}/tests/main.yml'
 
-  #- docker exec -t -e RUN=${install_deps} "$(cat ${container_id})" env TERM=xterm bash -c '${RUN}'
+  # Test Idempotence
+  - idempotence=$(mktemp)
+  - docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/${role}/tests/main.yml | tee -a ${idempotence}
+  - >
+    tail ${idempotence}
+    | grep -q 'failed=0'
+    && (echo 'Idempotence test: pass' && exit 0)
+    || (echo 'Idempotence test: fail' && exit 1)
 
-#  # Ansible syntax check.
-#  - 'docker exec -t "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${role}/tests/main.yml --syntax-check'
-#
-#  # Test role.
-#  - 'docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/roles/${role}/tests/main.yml'
-#
-#  # Test Idempotence
-#  - idempotence=$(mktemp)
-#  - docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/${role}/tests/main.yml | tee -a ${idempotence}
-#  - >
-#    tail ${idempotence}
-#    | grep -q 'failed=0'
-#    && (echo 'Idempotence test: pass' && exit 0)
-#    || (echo 'Idempotence test: fail' && exit 1)
-#
-#notifications:
-#  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
