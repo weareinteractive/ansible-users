@@ -44,11 +44,9 @@ script:
   # Install dependencies
   - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo "foo"'
 
-  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo !${distribution}?'
+  - docker exec -t -e RUN=${install_deps} "$(cat ${container_id})" env TERM=xterm bash -c 'echo !${RUN}?'
 
-  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo !"${distribution}"?'
-
-  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo "!${distribution}?"'
+  - docker exec -t -e RUN=${install_deps} "$(cat ${container_id})" env TERM=xterm bash -c 'echo !$RUN?'
 
 #  # Ansible syntax check.
 #  - 'docker exec -t "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${role}/tests/main.yml --syntax-check'
