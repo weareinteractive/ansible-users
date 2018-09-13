@@ -40,16 +40,16 @@ script:
   - docker run -d -v "${PWD}":/etc/ansible/roles/${role}:ro ${run_opts} ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" "${init}" > "${container_id}"
 
   # Install dependencies
-  - docker exec -t "$(cat ${container_id})" ${install_deps}
+  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo "foo"'
 
-  - docker exec -t "$(cat ${container_id})" "${install_deps}"
+  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo "${install_deps}"'
 
-  - docker exec -t "$(cat ${container_id})" echo 'Foobar'
+  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c "${install_deps}"
 
-  - 'docker exec -t "$(cat ${container_id})" ${install_deps}'
+  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c '${install_deps}'
 
 #  # Ansible syntax check.
-#  - 'docker exec -t "$(cat ${container_id})" env TERM=xterm  ansible-playbook /etc/ansible/roles/${role}/tests/main.yml --syntax-check'
+#  - 'docker exec -t "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${role}/tests/main.yml --syntax-check'
 #
 #  # Test role.
 #  - 'docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/roles/${role}/tests/main.yml'
