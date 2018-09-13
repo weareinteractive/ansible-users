@@ -30,7 +30,7 @@
       - username: foobar_system
         system: yes
       - username: foobar_file
-        user_files:
+        home_files:
           - "tests/.bashrc"
     users_group: staff
     users_groups:
