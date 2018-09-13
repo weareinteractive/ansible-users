@@ -40,10 +40,9 @@ script:
 
   # Install dependencies
   - docker exec -t -e TERM=xterm "$(cat ${container_id})" which bash
-  - docker exec -t -e TERM=xterm "$(cat ${container_id})" echo '${install_deps}'
+  - docker exec -t -e TERM=xterm "$(cat ${container_id})" echo "${install_deps}"
   - docker exec -t -e TERM=xterm "$(cat ${container_id})" echo '"${install_deps}"'
   - docker exec -t -e TERM=xterm "$(cat ${container_id})" /bin/bash -c 'echo "${install_deps}"'
-  - docker exec -t -e TERM=xterm "$(cat ${container_id})" /bin/bash -c 'echo "$(cat ${install_deps})"'
   - docker exec -t -e TERM=xterm "$(cat ${container_id})" /bin/bash -c '"${install_deps}"'
 
   # Ansible syntax check.
