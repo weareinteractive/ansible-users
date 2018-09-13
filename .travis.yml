@@ -11,8 +11,7 @@ env:
       distribution_version: "16.04"
       init: /lib/systemd/systemd
       run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-      install_deps: "echo 'Hello World'"
-      #install_deps: "bash -c 'apt-get update && apt-get install -y ssh'"
+      install_deps: "apt-get update && apt-get install -y ssh"
 #    - distribution: Ubuntu
 #      distribution_version: "14.04"
 #      init: /sbin/init
@@ -39,14 +38,10 @@ script:
   # Start The Built Container In The Background
   - docker run -d -v "${PWD}":/etc/ansible/roles/${role}:ro ${run_opts} ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" "${init}" > "${container_id}"
 
-  - echo "${distribution}"
-
   # Install dependencies
   - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo "foo"'
 
-  - docker exec -t -e RUN=${install_deps} "$(cat ${container_id})" env TERM=xterm bash -c 'echo !${RUN}?'
-
-  - docker exec -t -e RUN=${install_deps} "$(cat ${container_id})" env TERM=xterm bash -c 'echo !$RUN?'
+  - docker exec -t -e RUN=${install_deps} "$(cat ${container_id})" env TERM=xterm bash -c 'echo "${RUN}"'
 
 #  # Ansible syntax check.
 #  - 'docker exec -t "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${role}/tests/main.yml --syntax-check'
