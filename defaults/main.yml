@@ -14,6 +14,9 @@
 #     home_mode: "0750"
 #     home_create: yes
 #     home: /path/to/user/home
+#     home_files:
+#       - "/path/to/user/home/.bashrc"
+#       - "/path/to/user/home/.bash_profile"
 #     system: no
 #     authorized_keys:
 #       - "xxx"
