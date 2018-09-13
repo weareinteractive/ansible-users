@@ -11,7 +11,7 @@ env:
       distribution_version: "16.04"
       init: /lib/systemd/systemd
       run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-      install_deps: echo 'Hello World'
+      install_deps: "echo 'Hello World'"
       #install_deps: "bash -c 'apt-get update && apt-get install -y ssh'"
 #    - distribution: Ubuntu
 #      distribution_version: "14.04"
@@ -42,16 +42,11 @@ script:
   # Install dependencies
   - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo "foo"'
 
+  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo !${distribution}?'
 
-  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo !${install_deps}?'
+  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo !"${distribution}"?'
 
-  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo !"${install_deps}"?'
-
-  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c ${install_deps}
-
-  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c "${install_deps}"
-
-  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c '${install_deps}'
+  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo "!${distribution}?"'
 
 #  # Ansible syntax check.
 #  - 'docker exec -t "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${role}/tests/main.yml --syntax-check'
