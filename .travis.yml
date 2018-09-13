@@ -39,6 +39,8 @@ script:
   # Start The Built Container In The Background
   - docker run -d -v "${PWD}":/etc/ansible/roles/${role}:ro ${run_opts} ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" "${init}" > "${container_id}"
 
+  - echo "${distribution}"
+
   # Install dependencies
   - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo "foo"'
 
