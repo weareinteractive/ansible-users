@@ -1,3 +1,17 @@
+<a name="1.10.0"></a>
+## 1.10.0 (2018-09-13)
+
+
+#### Features
+
+*   add home_files to user ([43d50f22](https://github.com/weareinteractive/ansible-users/commit/43d50f2265958889b1f73dd4fd8da3fbaeb42d1b))
+
+#### Bug Fixes
+
+*   add skip for missing attributes ([11db5434](https://github.com/weareinteractive/ansible-users/commit/11db5434588e868b76d16404b242d2731333b966))
+
+
+
 <a name="1.9.3"></a>
 ### 1.9.3 (2018-05-13)
 
