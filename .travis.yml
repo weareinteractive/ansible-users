@@ -36,16 +36,16 @@ before_install:
 script:
   - container_id=$(mktemp)
   # Start The Built Container In The Background
-  - docker run --detach --volume="${PWD}":/etc/ansible/roles/${role}:ro ${run_opts} ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" "${init}" > "${container_id}"
+  - 'docker run --detach --volume="${PWD}":/etc/ansible/roles/${role}:ro ${run_opts} ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" "${init}" > "${container_id}"'
 
   # Install dependencies
-  - docker exec --tty "$(cat ${container_id})" env TERM=xterm bash -c '${install_deps}'
+  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm bash -c ''${install_deps}'''
 
   # Ansible syntax check.
-  - docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${role}/tests/main.yml --syntax-check
+  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${role}/tests/main.yml --syntax-check'
 
   # Test role.
-  - docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/roles/${role}/tests/main.yml
+  - 'docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/roles/${role}/tests/main.yml'
 
   # Test Idempotence
   - idempotence=$(mktemp)
