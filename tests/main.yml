@@ -29,6 +29,9 @@
         ssh_key_password: secret
       - username: foobar_system
         system: yes
+      - username: foobar_file
+        home_files:
+          - "tests/.bashrc"
     users_group: staff
     users_groups:
       - www-data

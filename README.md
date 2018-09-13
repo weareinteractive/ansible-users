@@ -56,6 +56,9 @@ Here is a list of all the default variables for this role, which are also availa
 #     home_mode: "0750"
 #     home_create: yes
 #     home: /path/to/user/home
+#     home_files:
+#       - "/path/to/user/home/.bashrc"
+#       - "/path/to/user/home/.bash_profile"
 #     system: no
 #     authorized_keys:
 #       - "xxx"
@@ -128,6 +131,9 @@ This is an example playbook:
         ssh_key_password: secret
       - username: foobar_system
         system: yes
+      - username: foobar_file
+        home_files:
+          - "tests/.bashrc"
     users_group: staff
     users_groups:
       - www-data
