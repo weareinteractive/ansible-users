@@ -11,7 +11,7 @@ env:
       distribution_version: "16.04"
       init: /lib/systemd/systemd
       run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-      install_deps: "echo 'Hello World'"
+      install_deps: echo 'Hello World'
       #install_deps: "bash -c 'apt-get update && apt-get install -y ssh'"
 #    - distribution: Ubuntu
 #      distribution_version: "14.04"
