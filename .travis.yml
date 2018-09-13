@@ -42,7 +42,12 @@ script:
   # Install dependencies
   - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo "foo"'
 
-  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo "${install_deps}"'
+
+  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo !${install_deps}?'
+
+  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'echo !"${install_deps}"?'
+
+  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c ${install_deps}
 
   - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c "${install_deps}"
 
