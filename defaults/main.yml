@@ -18,6 +18,9 @@
 #     home_files:
 #       - "/path/to/user/home/.bashrc"
 #       - "/path/to/user/home/.bash_profile"
+#     home_dirs:
+#       - "onedir"
+#       - "otherdir/subdir"
 #     system: no
 #     authorized_keys:
 #       - "xxx"

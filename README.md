@@ -10,6 +10,7 @@
 > * manges users
 > * manages user's private key
 > * manages user's authorized keys
+> * manages root's private keys, authorized keys and files
 
 ## Installation
 
@@ -60,6 +61,9 @@ Here is a list of all the default variables for this role, which are also availa
 #     home_files:
 #       - "/path/to/user/home/.bashrc"
 #       - "/path/to/user/home/.bash_profile"
+#     home_dirs:
+#       - "onedir"
+#       - "otherdir/subdir"
 #     system: no
 #     authorized_keys:
 #       - "xxx"
@@ -135,6 +139,8 @@ This is an example playbook:
       - username: foobar_file
         home_files:
           - "tests/.bashrc"
+        home_dirs:
+          - "public"
       - username: foobar_sftponly
         group: sftponly
         home_owner: root

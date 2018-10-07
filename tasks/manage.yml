@@ -81,6 +81,18 @@
     - home_files
     - skip_missing: yes
 
+- name: "Adding user's home dirs"
+  file:
+    path: "{{ item.0.home | default(users_home ~ '/' ~ item.0.username if ( item.0.username != 'root' ) else '/root') }}/{{ item.1 }}"
+    owner: "{{ item.0.username }}"
+    group: "{{ item.0.group if item.0.group is defined else (users_group if users_group else item.0.username) }}"
+    state: directory
+    mode: '0755'
+  with_subelements:
+    - "{{ users }}"
+    - home_dirs
+    - skip_missing: yes
+
 - name: Removing users
   user:
     name: "{{ item }}"
