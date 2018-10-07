@@ -54,6 +54,7 @@ Here is a list of all the default variables for this role, which are also availa
 #     groups: ["adm", "www-data"]
 #     append: no                    (only append groups, leave others)
 #     home_mode: "0750"
+#     home_owner: "not-foobar"      (only for cases when home owner is different from username, i.e. `root` for chrooted sftp users)
 #     home_create: yes
 #     home: /path/to/user/home
 #     home_files:
@@ -134,6 +135,9 @@ This is an example playbook:
       - username: foobar_file
         home_files:
           - "tests/.bashrc"
+      - username: foobar_sftponly
+        group: sftponly
+        home_owner: root
     users_group: staff
     users_groups:
       - www-data
