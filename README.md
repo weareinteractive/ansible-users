@@ -1,34 +1,38 @@
-# Ansible franklinkim.users role
+# Ansible weareinteractive.users role
 
 [![Build Status](https://img.shields.io/travis/weareinteractive/ansible-users.svg)](https://travis-ci.org/weareinteractive/ansible-users)
-[![Galaxy](http://img.shields.io/badge/galaxy-franklinkim.sudo-blue.svg)](https://galaxy.ansible.com/list#/roles/1385)
+[![Galaxy](http://img.shields.io/badge/galaxy-weareinteractive.sudo-blue.svg)](https://galaxy.ansible.com/list#/roles/1385)
 [![GitHub tag](https://img.shields.io/github/tag/weareinteractive/ansible-users.svg)](https://github.com/weareinteractive/ansible-users/releases)
 [![GitHub stars](https://img.shields.io/github/stars/weareinteractive/ansible-users.svg?style=social&label=Star)](https://github.com/weareinteractive/ansible-users)
 
-> `franklinkim.users` is an [Ansible](http://www.ansible.com) role which:
+> `weareinteractive.users` is an [Ansible](http://www.ansible.com) role which:
 >
 > * manges users
 > * manages user's private key
 > * manages user's authorized keys
+
+**Note:**
+
+> Since Ansible Galaxy switched all role names to the organization name, this role has moved from `franklinkim.users` to `weareinteractive.users`!
 
 ## Installation
 
 Using `ansible-galaxy`:
 
 ```shell
-$ ansible-galaxy install franklinkim.users
+$ ansible-galaxy install weareinteractive.users
 ```
 
 Using `requirements.yml`:
 
 ```yaml
-- src: franklinkim.users
+- src: weareinteractive.users
 ```
 
 Using `git`:
 
 ```shell
-$ git clone https://github.com/weareinteractive/ansible-users.git franklinkim.users
+$ git clone https://github.com/weareinteractive/ansible-users.git weareinteractive.users
 ```
 
 ## Dependencies
@@ -103,8 +107,9 @@ This is an example playbook:
 ---
 
 - hosts: all
+  become: yes
   roles:
-    - franklinkim.users
+    - weareinteractive.users
   vars:
     users:
       - username: foobar

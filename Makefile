@@ -1,5 +1,5 @@
 PWD=$(shell pwd)
-ROLE_NAME=franklinkim.users
+ROLE_NAME=weareinteractive.users
 ROLE_PATH=/etc/ansible/roles/$(ROLE_NAME)
 TEST_VERSION=ansible --version
 TEST_DEPS=apt-get update && apt-get install -y ssh

@@ -5,7 +5,7 @@ services:
   - docker
 env:
   global:
-    - role: franklinkim.users
+    - role: weareinteractive.users
   matrix:
     - distribution: Ubuntu
       distribution_version: "16.04"

@@ -1,8 +1,9 @@
 ---
 
 - hosts: all
+  become: yes
   roles:
-    - franklinkim.users
+    - weareinteractive.users
   vars:
     users:
       - username: foobar
