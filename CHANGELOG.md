@@ -1,3 +1,13 @@
+<a name="1.11.0"></a>
+## 1.11.0 (2018-12-11)
+
+
+#### Features
+
+*   adopt galaxy role name ([55a97e7d](https://github.com/weareinteractive/ansible-users/commit/55a97e7da4444af230a1621e7cd68ed80ec41a3a))
+
+
+
 <a name="1.10.0"></a>
 ## 1.10.0 (2018-09-13)
 
