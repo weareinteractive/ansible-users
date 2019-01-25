@@ -1,5 +1,10 @@
 ---
 
+- name: Adding group user's belong to
+  group: 
+    name: "{{ item }}" 
+  with_items: "{{ users | json_query('[*].groups[*]') | flatten | sort | unique }}"
+
 - name: Adding primary group
   group:
     name: "{{ users_group }}"
