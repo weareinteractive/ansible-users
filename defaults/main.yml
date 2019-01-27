@@ -30,7 +30,8 @@
 #     shell: /bin/bash
 #     update_password: always
 #
-# groups:
+# System groups (don't call it group! it's already used by ansible)
+# os_groups:
 #  name: superadmin
 #    members:
 #    - user1
@@ -63,3 +64,4 @@ users_ssh_key_bits: 2048
 users_authorized_keys_exclusive: no
 # list of users to be removed
 users_remove: []
+

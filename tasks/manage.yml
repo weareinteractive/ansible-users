@@ -111,4 +111,4 @@
   loop: "{{ groups }}"
   loop_control:
     loop_var: current_group
-  when: groups is defined
+  when: os_groups is defined
