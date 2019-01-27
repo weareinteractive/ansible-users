@@ -1,0 +1,8 @@
+---
+## add all members of a group. Separate file for nested loop
+- name: add group's members
+  user:
+    name: "{{ item }}"
+    groups: "{{ current_group.name }}"
+    append: yes
+  loop: "{{ current_group.members }}"

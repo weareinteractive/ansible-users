@@ -1,9 +1,18 @@
 ---
+## Dealing with groups
 
-- name: Adding group user's belong to
-  group: 
-    name: "{{ item }}" 
-  with_items: "{{ users | json_query('[*].groups[*]') | flatten | sort | unique }}"
+- name: Adding groups declared in groups
+  group:
+    name: "{{item.name}}"
+    state: present
+  with_items: "{{ groups }}"
+
+# We could automatically crete groups defined for users, but no in groups
+## would be better here just check for consistency between groups[*].name and users[*].groups[*] 
+#- name: Adding group user's belong to
+#  group: 
+#    name: "{{ item }}" 
+#  with_items: "{{ users | json_query('[*].groups[*]') | flatten | sort | unique }}"
 
 - name: Adding primary group
   group:
@@ -17,6 +26,8 @@
     state: present
   with_items: "{{ users_groups | default([]) }}"
 
+!
+## Dealing with users and attributes
 - name: Adding users
   user:
     name: "{{ item.username }}"
@@ -85,9 +96,19 @@
     - home_files
     - skip_missing: yes
 
+## Would be better to implement a strict / lazy set of users and membership. ¿Should I remove what is not defined in variables to be idempotent?
 - name: Removing users
   user:
     name: "{{ item }}"
     state: absent
     remove: yes
   with_items: "{{ users_remove }}"
+
+## Dealing with groups' membership
+
+- name: groups' loop to add declared members to groups
+  insert_tasks: add_group_members.yml
+  loop: "{{ groups }}"
+  loop_control:
+    loop_var: current_group
+  when: groups is defined
