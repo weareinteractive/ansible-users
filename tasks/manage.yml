@@ -21,7 +21,7 @@
     system: "{{ item.system | default(omit) }}"
     generate_ssh_key: "{{ item.ssh_key_generate | default(omit) }}"
     group: "{{ omit if item.group is defined and item.group == item.username else (item.group if item.group is defined else (users_group if users_group else omit)) }}"
-    groups: "{{ item.groups|join(',') if item.groups is defined else users_groups|join(',')}}"
+    groups: "{{ item.groups|join(',') if item.groups is defined else users_groups|join(',') }}"
     append: "{{ item.append | default(omit) }}"
     password: "{{ item.password | default(omit) }}"
     ssh_key_file: ".ssh/id_{{ item.ssh_key_type | default(users_ssh_key_type) }}"
