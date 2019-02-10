@@ -8,21 +8,25 @@ env:
     - role: weareinteractive.users
   matrix:
     - distribution: Ubuntu
+      distribution_version: "18.04"
+      init: /lib/systemd/systemd
+      run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
+      before_test: "'apt-get update && apt-get install -y python openssh-client'"
+    - distribution: Ubuntu
       distribution_version: "16.04"
       init: /lib/systemd/systemd
-      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-    - distribution: Ubuntu
-      distribution_version: "14.04"
-      init: /sbin/init
-      run_opts: ""
+      run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
+      before_test: "'apt-get update && apt-get install -y openssh-client'"
     - distribution: Debian
       distribution_version: "9"
       init: /lib/systemd/systemd
-      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+      run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
+      before_test: "'apt-get update && apt-get install -y openssh-client'"
     - distribution: Debian
       distribution_version: "8"
       init: /lib/systemd/systemd
-      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+      run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
+      before_test: "'apt-get update && apt-get install -y openssh-client'"
 
 before_install:
   - sudo apt-get update
@@ -37,11 +41,11 @@ script:
   # Print ansible version
   - docker exec -t "$(cat ${container_id})" env TERM=xterm ansible --version
 
-  # Install dependencies
-  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'apt-get update && apt-get install -y ssh'
-
   # Ansible syntax check.
   - 'docker exec -t "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${role}/tests/main.yml --syntax-check'
+
+  # Install dependencies
+  - docker exec -t "$(cat ${container_id})" env TERM=xterm sh -c "${before_test}"
 
   # Test role.
   - 'docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/roles/${role}/tests/main.yml'
