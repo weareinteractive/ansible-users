@@ -1,7 +1,7 @@
 # Ansible weareinteractive.users role
 
 [![Build Status](https://img.shields.io/travis/weareinteractive/ansible-users.svg)](https://travis-ci.org/weareinteractive/ansible-users)
-[![Galaxy](http://img.shields.io/badge/galaxy-weareinteractive.sudo-blue.svg)](https://galaxy.ansible.com/list#/roles/1385)
+[![Galaxy](http://img.shields.io/badge/galaxy-weareinteractive.users-blue.svg)](https://galaxy.ansible.com/weareinteractive/users)
 [![GitHub tag](https://img.shields.io/github/tag/weareinteractive/ansible-users.svg)](https://github.com/weareinteractive/ansible-users/releases)
 [![GitHub stars](https://img.shields.io/github/stars/weareinteractive/ansible-users.svg?style=social&label=Star)](https://github.com/weareinteractive/ansible-users)
 
