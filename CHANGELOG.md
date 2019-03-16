@@ -1,3 +1,13 @@
+<a name="1.11.2"></a>
+### 1.11.2 (2019-03-16)
+
+
+#### Bug Fixes
+
+*   remove comment in private key file ([24ca28a7](https://github.com/weareinteractive/ansible-users/commit/24ca28a79b69d138e136d302452aa1a4a9a88d34))
+
+
+
 <a name="1.11.1"></a>
 ### 1.11.1 (2019-02-10)
 
