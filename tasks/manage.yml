@@ -12,8 +12,8 @@
     state: present
   with_items: "{{ users_groups | default([]) }}"
 
-- name: "Configure users"
-  include_tasks: user.yml
+- name: Configure users
+  include_tasks: manage_user.yml
   with_items: "{{ users }}"
 
 - name: Removing users

@@ -1,6 +1,6 @@
 ---
 
-- name: User | Setting home permission
+- name: Setting user's home permission
   file:
     dest: "{{ item.home | default(users_home ~ '/' ~ item.username) }}"
     owner: "{{ item.username }}"
@@ -8,7 +8,7 @@
     mode: "{{ item.home_mode if item.home_mode is defined else users_home_mode }}"
   when: not ansible_check_mode
 
-- name: User | Adding .ssh directory
+- name: Adding user's .ssh directory
   file:
     path: "{{ item.home | default(users_home ~ '/' ~ item.username) }}/.ssh"
     owner: "{{ item.username }}"
@@ -16,7 +16,7 @@
     state: directory
     mode: '0700'
 
-- name: User | Adding private key
+- name: Adding user's private key
   template:
     src: home/user/ssh/private-key.j2
     dest: "{{ item.home | default(users_home ~ '/' ~ item.username) }}/.ssh/id_{{ item.ssh_key_type | default('rsa') }}"
@@ -25,14 +25,14 @@
     mode: '0600'
   when: item.ssh_key is defined
 
-- name: User | Adding authorized keys
+- name: Adding user's authorized keys
   authorized_key:
     key: "{{ item.authorized_keys | default([]) | join('\n') }}"
     user: "{{ item.username }}"
     exclusive: "{{ item.authorized_keys_exclusive | default(users_authorized_keys_exclusive) }}"
   when: not ansible_check_mode
 
-- name: User | Adding home files
+- name: Adding user's home files
   copy:
     src: "{{ home_file }}"
     dest: "{{ item.home | default(users_home ~ '/' ~ item.username) }}/{{ home_file | basename }}"

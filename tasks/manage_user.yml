@@ -1,6 +1,6 @@
 ---
 
-- name: "User | Adding '{{ item.username }}' to the system"
+- name: "Adding user '{{ item.username }}' to the system"
   user:
     name: "{{ item.username }}"
     uid: "{{ item.uid | default(omit) }}"
@@ -22,6 +22,6 @@
     shell: "{{ item.shell | default(omit) }}"
     update_password: "{{ item.update_password | default(omit) }}"
 
-- name: User | Configure home
-  include_tasks: user_home.yml
+- name: Configuring user's home
+  import_tasks: manage_user_home.yml
   when: item.home_create is not defined or item.home_create
