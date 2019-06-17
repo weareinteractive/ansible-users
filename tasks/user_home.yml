@@ -1,0 +1,44 @@
+---
+
+- name: User | Setting home permission
+  file:
+    dest: "{{ item.home | default(users_home ~ '/' ~ item.username) }}"
+    owner: "{{ item.username }}"
+    group: "{{ item.group if item.group is defined else (users_group if users_group else item.username) }}"
+    mode: "{{ item.home_mode if item.home_mode is defined else users_home_mode }}"
+  when: not ansible_check_mode
+
+- name: User | Adding .ssh directory
+  file:
+    path: "{{ item.home | default(users_home ~ '/' ~ item.username) }}/.ssh"
+    owner: "{{ item.username }}"
+    group: "{{ item.group if item.group is defined else (users_group if users_group else item.username) }}"
+    state: directory
+    mode: '0700'
+
+- name: User | Adding private key
+  template:
+    src: home/user/ssh/private-key.j2
+    dest: "{{ item.home | default(users_home ~ '/' ~ item.username) }}/.ssh/id_{{ item.ssh_key_type | default('rsa') }}"
+    owner: "{{ item.username }}"
+    group: "{{ item.group if item.group is defined else (users_group if users_group else item.username) }}"
+    mode: '0600'
+  when: item.ssh_key is defined
+
+- name: User | Adding authorized keys
+  authorized_key:
+    key: "{{ item.authorized_keys | default([]) | join('\n') }}"
+    user: "{{ item.username }}"
+    exclusive: "{{ item.authorized_keys_exclusive | default(users_authorized_keys_exclusive) }}"
+  when: not ansible_check_mode
+
+- name: User | Adding home files
+  copy:
+    src: "{{ home_file }}"
+    dest: "{{ item.home | default(users_home ~ '/' ~ item.username) }}/{{ home_file | basename }}"
+    owner: "{{ item.username }}"
+    group: "{{ item.group if item.group is defined else (users_group if users_group else item.username) }}"
+  with_items: "{{ item.home_files }}"
+  loop_control:
+    loop_var: home_file
+  when: item.home_files is defined
