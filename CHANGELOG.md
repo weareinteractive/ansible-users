@@ -1,3 +1,13 @@
+<a name="1.12.0"></a>
+## 1.12.0 (2019-06-17)
+
+
+#### Bug Fixes
+
+*   fix directory not found in check mode ([57d10aa7](https://github.com/weareinteractive/ansible-users/commit/57d10aa765331429f91e3e1c6210f15ff5f0a1dc))
+
+
+
 <a name="1.11.2"></a>
 ### 1.11.2 (2019-03-16)
 
