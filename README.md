@@ -81,12 +81,16 @@ Here is a list of all the default variables for this role, which are also availa
 users: []
 # users home directory
 users_home: /home
+# create user's home directory
+users_home_create: yes
 # default user's primary group for users
 users_group:
 # default user's secondary groups
 users_groups: []
 # default user's home directory permissions
 users_home_mode: "0755"
+# default user login shell
+#users_shell:
 # default user's ssh key type
 users_ssh_key_type: rsa
 # default user's ssh key bits
