@@ -33,6 +33,8 @@
 
 # list of users to add
 users: []
+# default user's dotfiles
+users_home_files: []
 # users home directory
 users_home: /home
 # create user's home directory

@@ -38,7 +38,6 @@
     dest: "{{ item.home | default(users_home ~ '/' ~ item.username) }}/{{ home_file | basename }}"
     owner: "{{ item.username }}"
     group: "{{ item.group if item.group is defined else (users_group if users_group else item.username) }}"
-  with_items: "{{ item.home_files }}"
+  with_items: "{{ item.home_files | default(users_home_files) }}"
   loop_control:
     loop_var: home_file
-  when: item.home_files is defined

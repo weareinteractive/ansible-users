@@ -79,6 +79,8 @@ Here is a list of all the default variables for this role, which are also availa
 
 # list of users to add
 users: []
+# default user's dotfiles
+users_home_files: []
 # users home directory
 users_home: /home
 # create user's home directory
