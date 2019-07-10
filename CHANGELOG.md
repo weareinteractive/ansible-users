@@ -1,3 +1,13 @@
+<a name="1.13.0"></a>
+## 1.13.0 (2019-07-10)
+
+
+#### Features
+
+*   add default values ([b5bc7116](https://github.com/weareinteractive/ansible-users/commit/b5bc7116ab64e9e01c972a8bf944e0d4def837c3))
+
+
+
 <a name="1.12.0"></a>
 ## 1.12.0 (2019-06-17)
 
