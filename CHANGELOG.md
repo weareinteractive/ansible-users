@@ -1,3 +1,13 @@
+<a name="1.13.1"></a>
+### 1.13.1 (2019-10-17)
+
+
+#### Features
+
+*   test and document centos7 support ([bda06a8c](https://github.com/weareinteractive/ansible-users/commit/bda06a8cf77f198bf659b1c795a4e5a759a04b5e))
+
+
+
 <a name="1.13.0"></a>
 ## 1.13.0 (2019-07-10)
 
