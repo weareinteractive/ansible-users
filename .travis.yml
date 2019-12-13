@@ -23,7 +23,7 @@ env:
       run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
       before_test: "'apt-get update && apt-get install -y openssh-client'"
     - distribution: Debian
-      distribution_version: "8"
+      distribution_version: "10"
       init: /lib/systemd/systemd
       run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
       before_test: "'apt-get update && apt-get install -y openssh-client'"
