@@ -99,8 +99,11 @@ users_ssh_key_type: rsa
 users_ssh_key_bits: 2048
 # default user's setting for authorized keys exclusive
 users_authorized_keys_exclusive: no
-# list of users to be removed
-users_remove: []
+# list of users to be removed,
+users_remove:
+  - { username: foo, remove_homedir: no }
+  - { username: bar }
+
 
 ```
 
