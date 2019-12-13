@@ -152,7 +152,9 @@ This is an example playbook:
     users_groups:
       - www-data
     users_authorized_keys_exclusive: yes
-    users_remove: [foobar]
+    users_remove:
+      - { username: foo, remove_homedir: no }
+      - { username: bar }
 
 ```
 
