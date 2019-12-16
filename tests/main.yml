@@ -37,4 +37,7 @@
     users_groups:
       - www-data
     users_authorized_keys_exclusive: yes
-    users_remove: [foobar]
+    users_remove:
+    - { username: foobar, remove_homedir: no }
+    - { username: foobar_authorized_keys, remove_homedir: yes }
+
