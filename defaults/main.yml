@@ -27,6 +27,9 @@
 #     ssh_key_password: ""
 #     ssh_key_generate: no
 #     ssh_key: "xxx" or "{{ lookup('file', '/path/to/id_rsa') }}"
+#     ssh_keys:
+#       id_rsa_1: "xxx" or "{{ lookup('file', '/path/to/id_rsa') }}"
+#       id_rsa_2: "xxx" or "{{ lookup('file', '/path/to/id_rsa') }}"
 #     shell: /bin/bash
 #     update_password: always
 #
