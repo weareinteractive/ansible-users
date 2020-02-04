@@ -73,6 +73,9 @@ Here is a list of all the default variables for this role, which are also availa
 #     ssh_key_password: ""
 #     ssh_key_generate: no
 #     ssh_key: "xxx" or "{{ lookup('file', '/path/to/id_rsa') }}"
+#     ssh_keys:
+#       id_rsa_1: "xxx" or "{{ lookup('file', '/path/to/id_rsa') }}"
+#       id_rsa_2: "xxx" or "{{ lookup('file', '/path/to/id_rsa') }}"
 #     shell: /bin/bash
 #     update_password: always
 #
@@ -137,6 +140,10 @@ This is an example playbook:
         home_mode: "0750"
       - username: foobar_key
         ssh_key: "{{ lookup('file', 'tests/id_rsa') }}"
+      - username: foobar_keys
+        ssh_keys:
+          id_rsa_1: "{{ lookup('file', 'tests/id_rsa') }}"
+          id_rsa_2: "{{ lookup('file', 'tests/id_rsa') }}"
       - username: foobar_key_generate
         ssh_key_generate: yes
         ssh_key_password: secret
