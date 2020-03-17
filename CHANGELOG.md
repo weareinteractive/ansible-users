@@ -1,3 +1,13 @@
+<a name="1.14.1"></a>
+### 1.14.1 (2020-03-17)
+
+
+#### Features
+
+*   set no_log on private key ([b31ba4c7](https://github.com/weareinteractive/ansible-users/commit/b31ba4c7e4dce1b3a0250fa70d0d7f8257403b6e))
+
+
+
 <a name="1.14.0"></a>
 ## 1.14.0 (2020-02-04)
 
