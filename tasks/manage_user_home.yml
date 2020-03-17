@@ -24,6 +24,7 @@
     group: "{{ user.group if user.group is defined else (users_group if users_group else user.username) }}"
     mode: '0600'
   when: user.ssh_key is defined
+  no_log: true
 
 - name: Adding user's private keys
   copy:
