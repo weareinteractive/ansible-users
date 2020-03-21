@@ -35,6 +35,7 @@
     mode: '0600'
   when: user.ssh_key is not defined and user.ssh_keys is defined
   with_dict: "{{ user.ssh_keys }}"
+  no_log: true
 
 - name: Adding user's authorized keys
   authorized_key:
