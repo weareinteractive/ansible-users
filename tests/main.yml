@@ -37,6 +37,19 @@
       - username: foobar_file
         home_files:
           - "tests/.bashrc"
+      - username: bar_sudo
+        password: $6$pBtCEpYB$6vc5Dhwf.YI6jCUyJRBmgacB4qri2Y1WmINjufblB97sZpuhhEkUvZhTB8rGUKRq.urifltBSSh68rh.esHCS.
+        home: /home/bar_sudo
+        shell: /bin/bash
+        update_password: always
+        sudoer: yes
+      - username: foo_sudo
+        password: $6$bhdpgAcPxL$rNcZtYZj2sAuDD.dNsdT98zEp9zO7Mwt1wjLjYb47hKew062X3Vau3BukY8cRVNtwixqScJMECMu8p3YQDhpf0
+        home: /home/foo_sudo
+        shell: /bin/bash
+        update_password: always
+        sudoer: yes
+        sudo_ask_passwd: yes
     users_group: staff
     users_groups:
       - www-data
