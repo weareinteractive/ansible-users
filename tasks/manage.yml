@@ -20,7 +20,7 @@
 
 - name: Removing users
   user:
-    name: "{{ item }}"
+    name: "{{ item.username }}"
     state: absent
-    remove: yes
+    remove: "{{ item.remove_homedir|default(omit) }}"
   with_items: "{{ users_remove }}"
