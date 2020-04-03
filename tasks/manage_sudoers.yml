@@ -1,0 +1,22 @@
+---
+- name: Ensure sudo package is present
+  block:
+    - apt:
+        name: sudo
+        state: present
+      when: ansible_os_family == 'Debian'
+    - yum:
+        name: sudo
+        state: present
+      when: ansible_os_family == 'CentOS'
+
+- name: Register user to the sudoers
+  copy:
+    content: |
+      {{ user.username }}  ALL=(ALL)  {{
+        'NOPASSWD' if user.sudo_ask_passwd is not defined
+        else user.sudo_ask_passwd | ternary('PASSWD', 'NOPASSWD')
+      }}: ALL
+
+    dest: "/etc/sudoers.d/{{ user.username }}"
+    validate: /usr/sbin/visudo -csf %s

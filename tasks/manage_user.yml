@@ -24,4 +24,8 @@
 
 - name: Configuring user's home
   import_tasks: manage_user_home.yml
-  when: user.home_create | default(users_home_create)
+  when: user.home_create | default(users_home_create) | bool
+
+- name: Manage user's sudo privileges
+  import_tasks: manage_sudoers.yml
+  when: user.sudoer | default(users_become_sudoer) | bool
