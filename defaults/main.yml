@@ -33,6 +33,9 @@
 #     shell: /bin/bash
 #     update_password: always
 #
+# users_remove:
+#   - foobar
+#   - { username: foobar, remove: no }
 
 # list of users to add
 users: []
