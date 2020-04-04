@@ -16,11 +16,11 @@
   include_tasks: manage_user.yml
   with_items: "{{ users }}"
   loop_control:
-      loop_var: user
+    loop_var: user
 
 - name: Removing users
   user:
-    name: "{{ item.username }}"
+    name: "{{ item.username if item.username is defined else item }}"
     state: absent
-    remove: "{{ item.remove_homedir|default(omit) }}"
+    remove: "{{ item.remove if item.remove is defined else omit }}"
   with_items: "{{ users_remove }}"
