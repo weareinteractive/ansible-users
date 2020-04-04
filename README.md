@@ -79,6 +79,9 @@ Here is a list of all the default variables for this role, which are also availa
 #     shell: /bin/bash
 #     update_password: always
 #
+# users_remove:
+#   - foobar
+#   - { username: foobar, remove: no }
 
 # list of users to add
 users: []
@@ -102,11 +105,8 @@ users_ssh_key_type: rsa
 users_ssh_key_bits: 2048
 # default user's setting for authorized keys exclusive
 users_authorized_keys_exclusive: no
-# list of users to be removed,
-users_remove:
-  - { username: foo, remove_homedir: no }
-  - { username: bar }
-
+# list of users to be removed
+users_remove: []
 
 ```
 
@@ -160,8 +160,10 @@ This is an example playbook:
       - www-data
     users_authorized_keys_exclusive: yes
     users_remove:
-      - { username: foo, remove_homedir: no }
-      - { username: bar }
+    - foobar
+    - { username: foobar_key, remove: no }
+    - { username: foobar_authorized_keys, remove: yes }
+
 
 ```
 
