@@ -1,3 +1,13 @@
+<a name="1.15.0"></a>
+## 1.15.0 (2020-04-04)
+
+
+#### Features
+
+*   allow to keep user directories on delete ([cd363ce7](https://github.com/weareinteractive/ansible-users/commit/cd363ce78d13cf8e641b1fa743f88da627935239))
+
+
+
 <a name="1.14.1"></a>
 ### 1.14.1 (2020-03-17)
 
