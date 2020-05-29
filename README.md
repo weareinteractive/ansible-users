@@ -155,6 +155,9 @@ This is an example playbook:
       - username: foobar_file
         home_files:
           - "tests/.bashrc"
+      - username: root
+        user_create: no
+        home_create: no
     users_group: staff
     users_groups:
       - www-data

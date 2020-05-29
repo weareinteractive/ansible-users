@@ -61,3 +61,5 @@ users_ssh_key_bits: 2048
 users_authorized_keys_exclusive: no
 # list of users to be removed
 users_remove: []
+# create users, can be overridden with user_create on a per user base
+users_user_create: yes
