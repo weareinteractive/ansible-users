@@ -15,6 +15,7 @@
 - name: Configure users
   include_tasks: manage_user.yml
   with_items: "{{ users }}"
+  when: user.username != 'root'
   loop_control:
     loop_var: user
 

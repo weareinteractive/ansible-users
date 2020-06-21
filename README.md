@@ -124,6 +124,7 @@ This is an example playbook:
     - weareinteractive.users
   vars:
     users:
+      - username: root
       - username: foobar
         name: Foo Bar 1
       - username: foobar_authorized_keys
