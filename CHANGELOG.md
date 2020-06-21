@@ -1,3 +1,13 @@
+<a name="1.16.0"></a>
+## 1.16.0 (2020-06-21)
+
+
+#### Features
+
+*   ignore root user ([55d3c48f](https://github.com/weareinteractive/ansible-users/commit/55d3c48fd011eb37c51492714ff3bb4d6a232c4a))
+
+
+
 <a name="1.15.0"></a>
 ## 1.15.0 (2020-04-04)
 
