@@ -32,6 +32,7 @@
 #       id_rsa_2: "xxx" or "{{ lookup('file', '/path/to/id_rsa') }}"
 #     shell: /bin/bash
 #     update_password: always
+#     user_create: yes
 #
 # users_remove:
 #   - foobar
@@ -39,6 +40,8 @@
 
 # list of users to add
 users: []
+# create the users
+users_user_create: yes
 # default user's dotfiles
 users_home_files: []
 # users home directory
