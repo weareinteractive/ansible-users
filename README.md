@@ -78,6 +78,7 @@ Here is a list of all the default variables for this role, which are also availa
 #       id_rsa_2: "xxx" or "{{ lookup('file', '/path/to/id_rsa') }}"
 #     shell: /bin/bash
 #     update_password: always
+#     user_create: yes
 #
 # users_remove:
 #   - foobar
@@ -85,6 +86,8 @@ Here is a list of all the default variables for this role, which are also availa
 
 # list of users to add
 users: []
+# create the users
+users_user_create: yes
 # default user's dotfiles
 users_home_files: []
 # users home directory
@@ -125,6 +128,11 @@ This is an example playbook:
   vars:
     users:
       - username: root
+        home: /root
+        group: root
+        authorized_keys:
+          - "{{ lookup('file', 'tests/id_rsa.pub') }}"
+        user_create: no
       - username: foobar
         name: Foo Bar 1
       - username: foobar_authorized_keys
