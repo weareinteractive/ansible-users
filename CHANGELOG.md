@@ -1,3 +1,13 @@
+<a name="1.17.0"></a>
+## 1.17.0 (2020-11-06)
+
+
+#### Features
+
+*   add `users_user_create` and `user.user_create` option ([daa876ee](https://github.com/weareinteractive/ansible-users/commit/daa876ee0c9d9839a899668ebe65a5504a7bf2b0))
+
+
+
 <a name="1.16.0"></a>
 ## 1.16.0 (2020-06-21)
 
