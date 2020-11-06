@@ -7,6 +7,11 @@
   vars:
     users:
       - username: root
+        home: /root
+        group: root
+        authorized_keys:
+          - "{{ lookup('file', 'tests/id_rsa.pub') }}"
+        user_create: no
       - username: foobar
         name: Foo Bar 1
       - username: foobar_authorized_keys

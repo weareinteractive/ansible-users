@@ -21,6 +21,7 @@
     createhome: "{{ user.home_create | default(users_home_create) }}"
     shell: "{{ user.shell | default(users_shell | default(omit)) }}"
     update_password: "{{ user.update_password | default(omit) }}"
+  when: user.user_create | default(users_user_create)
 
 - name: Configuring user's home
   import_tasks: manage_user_home.yml
