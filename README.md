@@ -47,7 +47,7 @@ Here is a list of all the default variables for this role, which are also availa
 ---
 # This role takes advantage of Ansible's user role.
 # All user related properties will fall back to Ansible's default values.
-# @see http://docs.ansible.com/ansible/user_module.html
+# @see https://docs.ansible.com/ansible/latest/collections/ansible/builtin/user_module.html
 #
 # users:
 #   - username: foobar              (required)
