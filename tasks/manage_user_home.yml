@@ -6,7 +6,7 @@
     owner: "{{ user.username }}"
     group: "{{ user.group if user.group is defined else (users_group if users_group else user.username) }}"
     mode: "{{ user.home_mode if user.home_mode is defined else users_home_mode }}"
-  when: not ansible_check_mode
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Adding user's .ssh directory
   file:
@@ -41,7 +41,7 @@
     key: "{{ user.authorized_keys | default([]) | join('\n') }}"
     user: "{{ user.username }}"
     exclusive: "{{ user.authorized_keys_exclusive | default(users_authorized_keys_exclusive) }}"
-  when: not ansible_check_mode
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Adding user's home files
   copy:
