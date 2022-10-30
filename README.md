@@ -7,7 +7,7 @@
 
 > `weareinteractive.users` is an [Ansible](http://www.ansible.com) role which:
 >
-> * manges users
+> * manages users and groups
 > * manages user's private key
 > * manages user's authorized keys
 
@@ -45,7 +45,7 @@ Here is a list of all the default variables for this role, which are also availa
 
 ```yaml
 ---
-# This role takes advantage of Ansible's user role.
+# This role takes advantage of Ansible's user module.
 # All user related properties will fall back to Ansible's default values.
 # @see http://docs.ansible.com/ansible/user_module.html
 #
