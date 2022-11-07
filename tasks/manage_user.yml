@@ -1,7 +1,7 @@
 ---
 
 - name: "Adding user '{{ user.username }}' to the system"
-  user:
+  ansible.builtin.user:
     name: "{{ user.username }}"
     uid: "{{ user.uid | default(omit) }}"
     home: "{{ user.home | default(users_home ~ '/' ~ user.username ) }}"
