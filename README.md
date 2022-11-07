@@ -7,7 +7,7 @@
 
 > `weareinteractive.users` is an [Ansible](http://www.ansible.com) role which:
 >
-> * manages users and groups
+> * manages users and groups membership
 > * manages user's private key
 > * manages user's authorized keys
 
