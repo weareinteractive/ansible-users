@@ -19,7 +19,7 @@ ubuntu%: TEST_DEPS=apt-get update && \
 ubuntu22.04: dist=ubuntu-22.04
 ubuntu22.04: .run
 
-ubuntu20.04: dist=ubuntu-22.04
+ubuntu20.04: dist=ubuntu-20.04
 ubuntu20.04: .run
 
 ubuntu18.04: dist=ubuntu-18.04
