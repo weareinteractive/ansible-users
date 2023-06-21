@@ -17,6 +17,7 @@
   with_items: "{{ users }}"
   loop_control:
     loop_var: user
+  when: user.hosts is not defined or inventory_hostname in user.hosts
 
 - name: Removing users
   user:
