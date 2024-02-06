@@ -9,7 +9,7 @@ badges: |
   [![GitHub tag](https://img.shields.io/github/tag/weareinteractive/ansible-users.svg)](https://github.com/weareinteractive/ansible-users/releases)
   [![GitHub stars](https://img.shields.io/github/stars/weareinteractive/ansible-users.svg?style=social&label=Star)](https://github.com/weareinteractive/ansible-users)
 description: |
-  > * manges users
+  > * manages users and groups membership
   > * manages user's private key
   > * manages user's authorized keys
 

@@ -16,6 +16,12 @@ lint:
 ubuntu%: TEST_DEPS=apt-get update && \
 	apt-get install -y python openssh-client
 
+ubuntu22.04: dist=ubuntu-22.04
+ubuntu22.04: .run
+
+ubuntu20.04: dist=ubuntu-20.04
+ubuntu20.04: .run
+
 ubuntu18.04: dist=ubuntu-18.04
 ubuntu18.04: .run
 
@@ -24,6 +30,12 @@ ubuntu16.04: .run
 
 debian%: TEST_DEPS=apt-get update && \
 	apt-get install -y openssh-client
+
+debian11: dist=debian-11
+debian11: .run
+
+debian10: dist=debian-10
+debian10: .run
 
 debian9: dist=debian-9
 debian9: .run

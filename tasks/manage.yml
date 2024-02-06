@@ -1,13 +1,13 @@
 ---
 
 - name: Adding primary group
-  group:
+  ansible.builtin.group:
     name: "{{ users_group }}"
     state: present
   when: users_group is defined and users_group
 
 - name: Adding secondary groups
-  group:
+  ansible.builtin.group:
     name: "{{ item }}"
     state: present
   with_items: "{{ users_groups | default([]) }}"
@@ -19,7 +19,7 @@
     loop_var: user
 
 - name: Removing users
-  user:
+  ansible.builtin.user:
     name: "{{ item.username if item.username is defined else item }}"
     state: absent
     remove: "{{ item.remove if item.remove is defined else omit }}"

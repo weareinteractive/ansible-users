@@ -1,12 +1,12 @@
 ---
 
-- name: Setting user's home permission
+- name: Setting user's home permissions
   file:
     dest: "{{ user.home | default(users_home ~ '/' ~ user.username) }}"
     owner: "{{ user.username }}"
     group: "{{ user.group if user.group is defined else (users_group if users_group else user.username) }}"
     mode: "{{ user.home_mode if user.home_mode is defined else users_home_mode }}"
-  when: not ansible_check_mode
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Adding user's .ssh directory
   file:
@@ -14,15 +14,15 @@
     owner: "{{ user.username }}"
     group: "{{ user.group if user.group is defined else (users_group if users_group else user.username) }}"
     state: directory
-    mode: '0700'
+    mode: 0700
 
-- name: Adding user's private key
+- name: Adding user's private SSH key
   copy:
     content: "{{ user.ssh_key }}"
     dest: "{{ user.home | default(users_home ~ '/' ~ user.username) }}/.ssh/id_{{ user.ssh_key_type | default('rsa') }}"
     owner: "{{ user.username }}"
     group: "{{ user.group if user.group is defined else (users_group if users_group else user.username) }}"
-    mode: '0600'
+    mode: 0600
   when: user.ssh_key is defined
   no_log: true
 
@@ -32,16 +32,16 @@
     dest: "{{ user.home | default(users_home ~ '/' ~ user.username) }}/.ssh/{{ item.key }}"
     owner: "{{ user.username }}"
     group: "{{ user.group if user.group is defined else (users_group if users_group else user.username) }}"
-    mode: '0600'
+    mode: 0600
   when: user.ssh_key is not defined and user.ssh_keys is defined
   with_dict: "{{ user.ssh_keys }}"
 
-- name: Adding user's authorized keys
+- name: Adding user's authorized SSH keys
   authorized_key:
     key: "{{ user.authorized_keys | default([]) | join('\n') }}"
     user: "{{ user.username }}"
     exclusive: "{{ user.authorized_keys_exclusive | default(users_authorized_keys_exclusive) }}"
-  when: not ansible_check_mode
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Adding user's home files
   copy:
